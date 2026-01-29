@@ -1,43 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in Page</title>
+    <title>Registrazione</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
 
-    <form action="signin.php" class="mb-3" method="POST">
+<body class="bg-light">
 
-    <div>
-    Insert name
-    <input type="text" name="nome" required>
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card shadow">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">Registrati</h3>
+
+                    <form action="signin.php" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="nome" class="form-control" placeholder="Mario" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Cognome</label>
+                            <input type="text" name="cognome" class="form-control" placeholder="Rossi" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="mariorossi" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="email@example.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">
+                                Registrati
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <div>
-    Insert surname
-    <input type="text" name="cognome" required>
-    </div>
-
-    <div>
-    Insert username
-    <input type="text" name="username" required>
-    </div>
-
-    <div>
-    Insert email
-    <input type="email" name="email" required>
-    </div>
-
-    <div>
-    Insert password
-    <input type="password" name="password" required>
-    </div>
-
-    <button type="submit" class="btn btn-success" required>Login</button>
-    </form>
+</div>
 
 </body>
 </html>

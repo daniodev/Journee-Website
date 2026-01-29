@@ -1,14 +1,18 @@
 <?php 
 
-    $conn = mysqli_connect("127.0.0.1","root","","journee_db");
-    $query = $conn -> query("SELECT * FROM utenti where username=". "'" .$_POST["username"] . "'");
+    if(!isset($_POST["email"]) || !isset($_POST["password"])){
+        header("Location: login.php");
+    }
+
+    $conn = mysqli_connect("127.0.0.1","root","","journee");
+    $query = $conn -> query("SELECT * FROM utenti where email=". "'" .$_POST["email"] . "'");
 
     $registered = false;
     while ($row = mysqli_fetch_array($query)) {
 
-        if ($row["username"] == $_POST["username"]) {
+        if ($row["email"] == $_POST["email"]) {
             $registered = true;
-            if($row["password"] == $_POST["password"]) {
+            if(password_verify($_POST["password"], $row["password"])) {
                 echo"Password corretta";
             }else{
                 echo "Password sbagliata";
