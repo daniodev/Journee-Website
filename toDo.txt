@@ -1,0 +1,5 @@
+Problemi da Risolvere
+
+1 look uguale alla pagina data da Alex  --- row e container nel Write.php                         (PAOLO PUGLIA)
+2 php non connesso al database  --- funzioni da collegare ai dati effetivi nel Write.php          (PAOLO PUGLIA)
+3 manca il funzionamento del bottone --- attaccare al bottone il Sendin.php   nel Write.php       (PAOLO PUGLIA)
