@@ -42,7 +42,7 @@
                     <div class="text-center mt-3">
                         <small>
                             Non hai un account?
-                            <a href="../Signin/register.php">Registrati</a>
+                            <a href="register.php">Registrati</a>
                         </small>
                     </div>
 

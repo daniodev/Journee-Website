@@ -14,7 +14,7 @@
 
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $string = "INSERT INTO utenti (username, nome, cognome, email, password) values ";
+    $string = "INSERT INTO utenti (username, nome, cognome, email, password_hash) values ";
     $string .= "('". $_POST["username"]. "', ";
     $string .= "'". $_POST["nome"] . "', ";
     $string .= "'". $_POST["cognome"] . "', ";
@@ -24,7 +24,7 @@
     echo $string;
     if ($conn -> query($string)) {
         echo "Ti sei registrato correttamente";
-         header("Location: ../Login/login.php");
+         header("Location: login.php");
     }else{
         echo "Errore.";
     }

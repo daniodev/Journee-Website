@@ -2,7 +2,10 @@
 
     if(!isset($_POST["email"]) || !isset($_POST["password"])){
         header("Location: login.php");
+        exit;
     }
+
+    session_start();
 
     $conn = mysqli_connect("127.0.0.1","root","","journee");
     $query = $conn -> query("SELECT * FROM utenti where email=". "'" .$_POST["email"] . "'");
@@ -12,8 +15,13 @@
 
         if ($row["email"] == $_POST["email"]) {
             $registered = true;
-            if(password_verify($_POST["password"], $row["password"])) {
-                echo"Password corretta";
+            if(password_verify($_POST["password"], $row["password_hash"])) {
+
+                $_SESSION["id"] = $row["id"];
+                echo "Password corretta.";
+
+                header("Location: ../diary/view.php");
+
             }else{
                 echo "Password sbagliata";
             }
