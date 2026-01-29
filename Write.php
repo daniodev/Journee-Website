@@ -7,7 +7,25 @@
     <title>Journee Write</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
+<?php
+$conn = mysqli_connect("localhost", "root", "", "journee_db") 
+    or die("Connection failed: " . mysqli_connect_error());
+//$query = $conn -> query()
+
+/*
+if($row["username"] == $_POST["username"]){
+$registered = true;
+if($row["password"] == $_POST["password"]){
+echo"Password c";
+}else{
+echo"Password sb";
+}
+
+*/
+
+?>
+
+    </head>
 
 <body>
     <div class="container">
@@ -94,10 +112,15 @@
 </div>
 
 
+    <button onclick="SendinFunction()" type="button" class="btn">Base class</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        function SendinFunction(){
+        }
     </script>
-</body>
+<?php
 
+?>
+</body>
 </html>
