@@ -12,6 +12,9 @@
     $_SESSION["id"]. ", " ."'titolo'" . ", '" . date('Y-m-d H:i:s'). "', '" .$_POST["comments"]. "')";
     mysqli_query($conn, $query);
 
+    header("Location: view.php");
+    exit;
+
 $comments = $_POST["comments"];
 $s1 = $_POST["scale1"];
 $s2 = $_POST["scale2"];

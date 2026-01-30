@@ -22,9 +22,16 @@
                     <form action="access.php" method="POST">
 
                         <?php 
+
+                        session_start();
+
                         $error = "";
                         if(isset($_GET["error"])){
                             $error = $_GET["error"];
+                        }
+                        if(isset($_SESSION["id"])){
+                            header("Location: ../diary/view.php");
+                            exit;
                         }
                         ?>
 

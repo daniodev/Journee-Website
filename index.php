@@ -6,6 +6,6 @@
     <title>Journee</title>
 </head>
 <body>
-    
+    <a href="/auth/login.php">Login</a>
 </body>
 </html>

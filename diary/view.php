@@ -10,27 +10,33 @@
     <?php 
         session_start();
 
-        $id = $_SESSION["id"];
-        if(!isset($id)){
+        if(!isset($_SESSION["id"])){
             header("Location: ../auth/login.php");
             exit;
         }
+        $id = $_SESSION["id"];
 
         $conn = mysqli_connect("127.0.0.1","root","","journee");
-        $query = "SELECT nome, cognome FROM UTENTI where id=".$id;
+        $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
+        $pagesQuery = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id. " ORDER BY giornoScrittura DESC";
 
-        $result = mysqli_query($conn, $query);
 
-        $row = mysqli_fetch_array($result);
-        echo "Nome: ". $row["nome"] . " Cognome: " . $row["cognome"];
+        $user = mysqli_query($conn, $userQuery);
+        $userRow = mysqli_fetch_array($user);
+        echo "<h1 class='h1 text-center'>Benvenuto, " . $userRow["nome"] . " " . $userRow["cognome"] . "</h1>";
 
-        $diary = mysqli_fetch_array(mysqli_query($conn, "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id));
-        echo $diary["titolo"] . " " . $diary["giornoScrittura"] . " " . $diary["pensieroGiornaliero"];
+        echo "<form action='../auth/logout.php' class='position-absolute top-0 end-0 mt-2 me-2'>
+        <button class='btn btn-danger'>Logout
+        </button>
+        </form>";
+        
+        echo "<div class='container mt-4 text-center'>";
+        $pages = mysqli_query($conn, $pagesQuery);
+        while ($row = mysqli_fetch_array($pages)) {
+            $date = DateTime::createFromFormat('Y-m-d H:i:s', $row["giornoScrittura"]);
+            echo $row["titolo"] . " " . $date->format('d:m:y H:i') . " " . $row["pensieroGiornaliero"] . "<br>";
+        }
+        echo "</div>";
     ?>
-
-
-<form action="../auth/logout.php">
-    <button class="btn btn-danger">ESCI</button>
-</form>
  </body>
  </html>
