@@ -32,20 +32,14 @@
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success">
-                                Login
-                            </button>
+                            <button type="submit" class="btn btn-success">Login</button>
                         </div>
 
                     </form>
 
                     <div class="text-center mt-3">
-                        <small>
-                            Non hai un account?
-                            <a href="register.php">Registrati</a>
-                        </small>
+                        <small>Non hai un account? <a href="register.php">Registrati</a></small>
                     </div>
-
                 </div>
             </div>
 

@@ -1,4 +1,7 @@
 <?php
+
+    $query = "INSERT INTO ";
+
 $comments = $_POST["comments"];
 $s1 = $_POST["scale1"];
 $s2 = $_POST["scale2"];

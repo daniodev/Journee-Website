@@ -3,6 +3,11 @@
 
     session_start();
 
+    if(!isset($_SESSION["id"])){
+        header("Location: ../auth/login.php");
+        exit;
+    }
+
     $conn = mysqli_connect("127.0.0.1","root","","journee");
     $query = "SELECT nome, cognome FROM UTENTI where id=".$_SESSION["id"];
 
