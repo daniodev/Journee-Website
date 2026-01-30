@@ -37,7 +37,7 @@ echo"Password sb";
 </head>
 
 <body>
-    <form action="Sendin.php" method="post">
+    <form action="sendData.php" method="post">
         <div class="container-fluid">
 
             <div class="row">

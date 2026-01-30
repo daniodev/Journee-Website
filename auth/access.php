@@ -23,14 +23,18 @@
                 header("Location: ../diary/view.php");
 
             }else{
-                echo "Password sbagliata";
+                //PASSWD SBAGLIATA
+                header("Location: login.php?error=1");
+                exit;
             }
     
         }
     }
 
     if($registered == false) {
-        echo "Non sei registrato";
+            //UTENTE NON REGISTRATO
+            header("Location: login.php?error=2");
+            exit;
     }
 
     mysqli_close($conn);

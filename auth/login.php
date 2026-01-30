@@ -21,14 +21,22 @@
 
                     <form action="access.php" method="POST">
 
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="email@example.com" required>
-                        </div>
+                        <?php 
+                        $error = "";
+                        if(isset($_GET["error"])){
+                            $error = $_GET["error"];
+                        }
+                        ?>
 
                         <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control <?php if($error==2) echo "is-invalid"; ?>" placeholder="email@example.com" required>
+                        </div>
+
+    
+                        <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input type="password" name="password" class="form-control <?php if($error==1) echo "is-invalid"; ?>" required>
                         </div>
 
                         <div class="d-grid">
@@ -39,6 +47,9 @@
 
                     <div class="text-center mt-3">
                         <small>Non hai un account? <a href="register.php">Registrati</a></small>
+                        <div>
+                        <small><a href="forgotPasswd.php">Password dimenticata?</a></small>
+                        </div>
                     </div>
                 </div>
             </div>

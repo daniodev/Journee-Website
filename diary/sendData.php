@@ -1,6 +1,16 @@
 <?php
 
-    $query = "INSERT INTO ";
+    session_start();
+
+    if(!isset($_SESSION["id"])){
+        header("Location: ../auth/login.php");
+        exit;
+    }
+
+    $conn = mysqli_connect("127.0.0.1","root","","journee");
+    $query = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) VALUES (".
+    $_SESSION["id"]. ", " ."'titolo'" . ", '" . date('Y-m-d H:i:s'). "', '" .$_POST["comments"]. "')";
+    mysqli_query($conn, $query);
 
 $comments = $_POST["comments"];
 $s1 = $_POST["scale1"];

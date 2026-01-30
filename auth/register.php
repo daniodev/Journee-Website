@@ -36,9 +36,16 @@
                             <input type="text" name="username" class="form-control" placeholder="mariorossi" required>
                         </div>
 
+                        <?php 
+                            $error = "";
+                            if(isset($_GET["error"])){
+                                $error = $_GET["error"];
+                            }
+                        ?>
+
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="email@example.com" required>
+                            <input type="email" name="email" class="form-control <?php if($error==1) echo "is-invalid"; ?>" placeholder="email@example.com" required>
                         </div>
 
                         <div class="mb-3">

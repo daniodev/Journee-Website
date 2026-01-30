@@ -8,7 +8,8 @@
 
     $check = $conn -> query("SELECT * FROM utenti where username=". "'" . $_POST["username"]. "'");
     if ($check -> num_rows > 0) {
-        echo "Username già presente";
+
+        header("Location: register.php?error=1");
         exit;
     }
 
