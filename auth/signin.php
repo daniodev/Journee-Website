@@ -1,16 +1,21 @@
 <?php 
 
-    $conn = mysqli_connect("127.0.0.1","root","","journee");
+    include '../sources/include/db.php';
 
-    if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["username"]) || !isset($_POST["nome"]) || !isset($_POST["cognome"])){
-        header("Location: ../Login/login.php");
+    if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["username"]) || !isset($_POST["nome"]) || !isset($_POST["cognome"]) || !isset($_POST["confirmPassword"])){
+        header("Location: register.php");
+        exit();
     }
 
-    $check = $conn -> query("SELECT * FROM utenti where username=". "'" . $_POST["username"]. "'");
+    $check = $conn -> query("SELECT * FROM utenti where email=". "'" . $_POST["email"]. "'");
     if ($check -> num_rows > 0) {
-
         header("Location: register.php?error=1");
-        exit;
+        exit();
+    }
+
+    if($_POST["password"] != $_POST["confirmPassword"]){
+        header("Location: register.php?error=2");
+        exit();
     }
 
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -24,10 +29,10 @@
 
     echo $string;
     if ($conn -> query($string)) {
-        echo "Ti sei registrato correttamente";
          header("Location: login.php");
     }else{
         echo "Errore.";
     }
     
+    mysqli_close($conn);
 ?>  

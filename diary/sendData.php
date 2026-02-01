@@ -7,7 +7,7 @@
         exit;
     }
 
-    $conn = mysqli_connect("127.0.0.1","root","","journee");
+    include '../sources/include/db.php';
     $query = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) VALUES (".
     $_SESSION["id"]. ", " ."'titolo'" . ", '" . date('Y-m-d H:i:s'). "', '" .$_POST["comments"]. "')";
     mysqli_query($conn, $query);

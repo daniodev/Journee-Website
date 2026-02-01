@@ -16,7 +16,7 @@
         }
         $id = $_SESSION["id"];
 
-        $conn = mysqli_connect("127.0.0.1","root","","journee");
+        include '../sources/include/db.php';
         $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
         $pagesQuery = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id. " ORDER BY giornoScrittura DESC";
 
