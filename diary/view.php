@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico diario</title>
  </head>
- <body>
+ <body style="background-color: d090d2;">
     <?php 
         session_start();
 
@@ -23,13 +23,19 @@
 
         $user = mysqli_query($conn, $userQuery);
         $userRow = mysqli_fetch_array($user);
+        echo "<div style='background-color: white;'>";
         echo "<h1 class='h1 text-center'>Benvenuto, " . $userRow["nome"] . " " . $userRow["cognome"] . "</h1>";
-
-        echo "<form action='../auth/logout.php' class='position-absolute top-0 end-0 mt-2 me-2'>
-        <button class='btn btn-danger'>Logout
-        </button>
-        </form>";
         
+        echo "<div class='position-absolute top-0 end-0 mt-2 me-2'>";
+        echo "<form action='../diary/write.php' class='d-inline'>";
+        echo "<button class='btn btn-warning'>Scrivi</button>";
+        echo "</form>";
+        echo "<form action='../auth/logout.php' class='d-inline ms-2'>";
+        echo "<button class='btn btn-danger'>Logout</button>";
+        echo "</form>";
+        echo "</div>";
+        echo "</div>";
+
         echo "<div class='container mt-4 text-center'>";
         $pages = mysqli_query($conn, $pagesQuery);
         while ($row = mysqli_fetch_array($pages)) {

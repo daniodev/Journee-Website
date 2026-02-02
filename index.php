@@ -7,7 +7,7 @@
     <?php include 'sources/include/bootStrap.html'; ?>
 </head>
 <body>
-<?php include 'sources/include/navBar.html';?>
+<?php include 'sources/include/navBar.php';?>
 
 
 

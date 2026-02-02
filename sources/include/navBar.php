@@ -21,9 +21,28 @@
                 </li>
             </ul>
 
-            <div class="d-flex gap-2">
-                <a href="./auth/login.php" class="btn btn-warning">Accedi all'area riservata</a>
-            </div>
+            <?php
+            
+            include '../sources/include/db.php';
+
+            session_start();
+            if(isset($_SESSION["id"])){
+
+            $id = $_SESSION["id"];
+
+            echo "<div class='d-flex gap-2'>";
+            echo "<a href='./diary/view.php' class='btn btn-warning'>Vai al diario</a>";
+            echo "</div>";
+
+            }else{
+
+            echo "<div class='d-flex gap-2'>";
+            echo "<a href='../auth/login.php' class='btn btn-warning'>Accedi all'area riservata</a>";
+            echo "</div>";
+
+            }
+
+            ?>            
         </div>
     </div>
 </nav>
