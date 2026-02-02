@@ -48,6 +48,9 @@ echo"Password sb";
 
                 <div class="col-md-6 col-12">
 
+                    <textarea class="form-control" id="title" name="title" rows="1" cols="50"
+                        placeholder="Write a title" required></textarea>
+
                     <textarea class="form-control" id="comments" name="comments" rows="7" cols="50"
                         placeholder="Write your thoughts" required></textarea>
                 </div>
