@@ -19,6 +19,7 @@
 
     if(password_verify($_POST["password"], $row["password_hash"])) {
         $_SESSION["id"] = $row["id"];
+        $_SESSION["nome"] = $row["nome"];
         header("Location: ../diary/view.php");
         }else{
             header("Location: login.php?error=1");
