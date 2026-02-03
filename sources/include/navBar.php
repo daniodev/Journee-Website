@@ -8,6 +8,12 @@
         <span class="navbar-toggler-icon"></span>
         </button>
 
+        <style>
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        </style>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -18,6 +24,16 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contatti</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
                 </li>
             </ul>
 
@@ -31,7 +47,10 @@
             $id = $_SESSION["id"];
 
             echo "<div class='d-flex gap-2'>";
-            echo "<a href='./diary/view.php' class='btn btn-warning'>Vai al diario</a>";
+            echo "<a href='./diary/view.php'>";
+            echo "<img src='../sources/images/user.png' width='35' height='35' class='rounded-circle'>";
+            echo "</a>";
+            echo "<a href='./diary/view.php' class='btn btn-warning'>Ciao, " . $_SESSION["nome"] . "</a>";
             echo "</div>";
 
             }else{

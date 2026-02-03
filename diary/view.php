@@ -18,7 +18,7 @@
 
         include '../sources/include/db.php';
         $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
-        $pagesQuery = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id. " ORDER BY giornoScrittura DESC";
+        $pagesQuery = "SELECT idPagina, titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id. " ORDER BY giornoScrittura DESC";
 
 
         $user = mysqli_query($conn, $userQuery);
@@ -39,8 +39,10 @@
         echo "<div class='container mt-4 text-center'>";
         $pages = mysqli_query($conn, $pagesQuery);
         while ($row = mysqli_fetch_array($pages)) {
+            echo "<a class='text-decoration-none text-dark' href='pageZoom.php?id=" . $row["idPagina"] . "'>";
             $date = DateTime::createFromFormat('Y-m-d H:i:s', $row["giornoScrittura"]);
-            echo $row["titolo"] . " " . $date->format('d:m:y H:i') . " " . $row["pensieroGiornaliero"] . "<br>";
+            echo $row["titolo"] . " " . $date->format('d:m:y H:i') . "<br>";
+            echo "</a>";
         }
         echo "</div>";
     ?>
