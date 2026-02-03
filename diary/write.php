@@ -37,18 +37,21 @@ echo"Password sb";
 </head>
 
 <body>
+    
     <form action="sendData.php" method="post">
         <div class="container-fluid">
 
+             
             <div class="row">
                 <h1>How was Today?</h1>
             </div>
 
+
+
             <div class="row">
-
+                
                 <div class="col-md-6 col-12">
-
-                    <textarea class="form-control" id="title" name="title" rows="1" cols="50"
+<textarea class="form-control" id="title" name="title" rows="1" cols="50"
                         placeholder="Write a title" required></textarea>
 
                     <textarea class="form-control" id="comments" name="comments" rows="7" cols="50"
