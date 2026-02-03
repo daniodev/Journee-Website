@@ -41,11 +41,81 @@ echo"Password sb";
         <div class="container-fluid">
 
             <div class="row">
-                <h1>How was Today?</h1>
+
+                <div class="col-7">
+
+                    <div class="row-1">
+                        <h1>How was Today?</h1>
+                    </div>
+
+                    <div class="row-1">
+
+                        <textarea class="form-control" id="title" name="title" rows="1" cols="7"
+                            placeholder="Write a title" required></textarea>
+                    </div>
+
+                    <div class="row-7">
+
+                        <textarea class="form-control" id="comments" name="comments" rows="7" cols="7"
+                            placeholder="Write your thoughts" required></textarea>
+                    </div>
+                </div>
+
             </div>
 
+            
+            <div class="col-5">
+            
+                <div class="row">
+
+                    <h4>Domanda 1</h4>
+                    <?php for($i=5;$i>=1;$i--): ?>
+                    <div class="col-1">
+
+                        <div class="form-check">
+                        
+                            <input class="form-check-input" type="Radio" name="scale1" value="<?= $i ?>"
+                                <?php if($i==5) echo "required"; ?>>
+                            <label class="form-check-label"><?= $i ?></label>
+                        </div>
+                    </div>
+                    <?php endfor; ?>
+
+                    <h4>Domanda 2</h4>
+                    <?php for($i=5;$i>=1;$i--): ?>
+                    <div class="col-1">
+
+                        <div class="form-check">
+                        
+                            <input class="form-check-input" type="Radio" name="scale2" value="<?= $i ?>"
+                                <?php if($i==5) echo "required"; ?>>
+                            <label class="form-check-label"><?= $i ?></label>
+                        </div>
+                    </div>
+                    <?php endfor; ?>
+
+                    <h4>Domanda 3</h4>
+                    <?php for($i=5;$i>=1;$i--): ?>
+                    <div class="col-1">
+
+                        <div class="form-check">
+                        
+                            <input class="form-check-input" type="Radio" name="scale3" value="<?= $i ?>"
+                                <?php if($i==5) echo "required"; ?>>
+                            <label class="form-check-label"><?= $i ?></label>
+                        </div>
+                    </div>
+                    <?php endfor; ?>
+
+                </div>
+            
+            </div>
+
+            
+            <!--
             <div class="row">
 
+                
                 <div class="col-md-6 col-12">
 
                     <textarea class="form-control" id="title" name="title" rows="1" cols="50"
@@ -54,7 +124,7 @@ echo"Password sb";
                     <textarea class="form-control" id="comments" name="comments" rows="7" cols="50"
                         placeholder="Write your thoughts" required></textarea>
                 </div>
-
+                
                 <div class="col-md-2 col-4">
 
                     <h4>Scala 1</h4>
@@ -91,7 +161,11 @@ echo"Password sb";
                     </div>
                     <?php endfor; ?>
                 </div>
+                
+
             </div>
+            -->
+
         </div>
 
 
