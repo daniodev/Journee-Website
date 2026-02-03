@@ -113,62 +113,6 @@ echo"Password sb";
             
             </div>
 
-
-
-            
-            <!--
-            <div class="row">
-
-                
-                <div class="col-md-6 col-12">
-
-                <textarea class="form-control" id="title" name="title" rows="1" cols="50"
-                        placeholder="Write a title" required></textarea>
-                    <textarea class="form-control" id="comments" name="comments" rows="7" cols="50"
-                        placeholder="Write your thoughts" required></textarea>
-                </div>
-                
-                <div class="col-md-2 col-4">
-
-                    <h4>Scala 1</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="Radio" name="scale1" value="<?= $i ?>"
-                            <?php if($i==5) echo "required"; ?>>
-                        <label class="form-check-label"><?= $i ?></label>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-
-                <div class="col-md-2 col-4">
-
-                    <h4>Scala 2</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="Radio" name="scale2" value="<?= $i ?>"
-                            <?php if($i==5) echo "required"; ?>>
-                        <label class="form-check-label"><?= $i ?></label>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-
-
-                <div class="col-md-2 col-4">
-
-                    <h4>Scala 3</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="Radio" name="scale3" value="<?= $i ?>"
-                            <?php if($i==5) echo "required"; ?>>
-                        <label class="form-check-label"><?= $i ?></label>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-                
-
-            </div>
-            -->
-
         </div>
 
 
