@@ -1,7 +1,20 @@
-
 ▀█▀ █▀█ █▀▄ █▀█   ░░█ █▀█ █░█ █▀█ █▄░█ █▀▀ █▀▀
 ░█░ █▄█ █▄▀ █▄█   █▄█ █▄█ █▄█ █▀▄ █░▀█ ██▄ ██▄
 
-1 look uguale alla pagina data da Alex  --- row e container nel Write.php                         (PAOLO PUGLIA)
-2 php non connesso al database  --- funzioni da collegare ai dati effetivi nel Write.php          (PAOLO PUGLIA)
-3 manca il funzionamento del bottone --- attaccare al bottone il Sendin.php   nel Write.php       (PAOLO PUGLIA)
+Front-End:
+    - Replicazione mokup: 
+        - Landing
+        - Home page
+        - Write diary
+        - Wiew diary / Dashboard
+    - Login
+    - Register
+    - Responsiveness
+
+Back-End:
+    - Home page
+    - Navbar
+    - Cancellazione pagina
+
+VPS
+DNS
