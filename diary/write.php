@@ -17,22 +17,8 @@
         header("Location: ../auth/login.php");
         exit;
     }
-
-
-//$query = $conn -> query()
-
-/*
-if($row["username"] == $_POST["username"]){
-$registered = true;
-if($row["password"] == $_POST["password"]){
-echo"Password c";
-}else{
-echo"Password sb";
-}
-
-*/
-
-?>
+    
+    ?>
 
 </head>
 
@@ -47,6 +33,7 @@ echo"Password sb";
                 <div class="col-7">
 
                     <div class="row-1">
+                        
                         <h1>How was Today?</h1>
                     </div>
 
