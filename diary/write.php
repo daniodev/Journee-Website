@@ -70,43 +70,23 @@ echo"Password sb";
             
                 <div class="row">
 
-                    <h4>Domanda 1</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="col-1">
+                    <?php for($i=1; $i<=3; $i++): ?>
 
-                        <div class="form-check">
-                        
-                            <input class="form-check-input" type="Radio" name="scale1" value="<?= $i ?>"
-                                <?php if($i==5) echo "required"; ?>>
-                            <label class="form-check-label"><?= $i ?></label>
-                        </div>
-                    </div>
-                    <?php endfor; ?>
+                        <h4>Domanda <?= $i ?></h4>
+                        <?php for($j=5; $j>=1; $j--): ?>
 
-                    <h4>Domanda 2</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="col-1">
+                            <div class="col-1">
 
-                        <div class="form-check">
-                        
-                            <input class="form-check-input" type="Radio" name="scale2" value="<?= $i ?>"
-                                <?php if($i==5) echo "required"; ?>>
-                            <label class="form-check-label"><?= $i ?></label>
-                        </div>
-                    </div>
-                    <?php endfor; ?>
+                                <div class="form-check">
 
-                    <h4>Domanda 3</h4>
-                    <?php for($i=5;$i>=1;$i--): ?>
-                    <div class="col-1">
+                                    <input class="form-check-input" type="Radio" name="scale<?= $i ?>" value="<?= $j ?>"
+                                        <?php if($j==5) echo "required"; ?>>
+                                    <label class="form-check-label"><?= $j ?></label>
+                                </div>
+                            </div>
 
-                        <div class="form-check">
-                        
-                            <input class="form-check-input" type="Radio" name="scale3" value="<?= $i ?>"
-                                <?php if($i==5) echo "required"; ?>>
-                            <label class="form-check-label"><?= $i ?></label>
-                        </div>
-                    </div>
+                        <?php endfor; ?>
+                    
                     <?php endfor; ?>
 
                 </div>
