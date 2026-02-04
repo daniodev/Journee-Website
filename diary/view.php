@@ -41,7 +41,7 @@
         while ($row = mysqli_fetch_array($pages)) {
             echo "<a class='text-decoration-none text-dark' href='pageZoom.php?id=" . $row["idPagina"] . "'>";
             $date = DateTime::createFromFormat('Y-m-d H:i:s', $row["giornoScrittura"]);
-            echo $row["titolo"] . " " . $date->format('d:m:y H:i') . "<br>";
+            echo $row["titolo"] . " " . $date->format('d:m:y') . "<br>";
             echo "</a>";
         }
         echo "</div>";

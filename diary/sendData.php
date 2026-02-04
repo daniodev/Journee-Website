@@ -1,7 +1,6 @@
 <?php
 
     session_start();
-
     if(!isset($_SESSION["id"])){
         header("Location: ../auth/login.php");
         exit;
@@ -9,69 +8,27 @@
 
     include '../sources/include/db.php';
 
-    
+    $query1 = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) VALUES (" .
+    $_SESSION["id"] . ", '" . $_POST["title"] . "', '" . date('Y-m-d H:i:s') . "', '" . $_POST["comments"] . "')";
 
-   $query1 = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) VALUES (" .
-$_SESSION["id"] . ", '" . $_POST["title"] . "', '" . date('Y-m-d H:i:s') . "', '" . $_POST["comments"] . "')";
+    mysqli_query($conn, $query1);
+    $idPagina = mysqli_insert_id($conn);
 
+    function memorizzaScale ($nome, $scala, $conn, $idPagina){
 
+        include '../sources/include/db.php';
+        $res = mysqli_query($conn, "SELECT idTipoScala FROM tipologiascale WHERE nome='". $nome . "'");
+        $row = mysqli_fetch_assoc($res);
+        $idTipoScala = $row['idTipoScala'];
+        return $query = "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
+        $scala . "', '" . $idPagina . "', '" . $idTipoScala . "')";
 
+    };
 
-mysqli_query($conn, $query1);
-
-$idPagina = mysqli_insert_id($conn); 
-
-//DA FARE A OGNI SCALA
-
-
-$res = mysqli_query($conn, "SELECT idTipoScala FROM tipologiascale WHERE nome='Lavoro'");
-$row = mysqli_fetch_assoc($res);
-$idTipoScala = $row['idTipoScala'];
-$query2 = "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
-$_POST["scale1"] . "', '" . $idPagina . "', '" . $idTipoScala . "')";
-
-
-mysqli_query($conn, $query2);
-
-$res = mysqli_query($conn, "SELECT idTipoScala FROM tipologiascale WHERE nome='Relazioni Sentimentali'");
-$row = mysqli_fetch_assoc($res);
-$idTipoScala = $row['idTipoScala'];
-$query3 = "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
-$_POST["scale2"] . "', '" . $idPagina . "', '" . $idTipoScala . "')";
-
-mysqli_query($conn, $query3);
-
-
-
-
-
-$res = mysqli_query($conn, "SELECT idTipoScala FROM tipologiascale WHERE nome='frocità'");
-$row = mysqli_fetch_assoc($res);
-$idTipoScala = $row['idTipoScala'];
-$query4 = "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
-$_POST["scale3"] . "', '" . $idPagina . "', '" . $idTipoScala . "')";
-
-
-
-
-mysqli_query($conn, $query4);
-
-
-
-
+    mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale1"], $conn, $idPagina));
+    mysqli_query($conn, memorizzaScale("Relazioni Sentimentali", $_POST["scale2"], $conn, $idPagina));
+    mysqli_query($conn, memorizzaScale("frocità", $_POST["scale3"], $conn, $idPagina));
 
     header("Location: view.php");
     exit;
-
-$title = $_POST["title"];
-$comments = $_POST["comments"];
-$s1 = $_POST["scale1"];
-$s2 = $_POST["scale2"];
-$s3 = $_POST["scale3"];
-
-echo $title;
-echo $comments;
-echo $s1;
-echo $s2;
-echo $s3;
 ?>
