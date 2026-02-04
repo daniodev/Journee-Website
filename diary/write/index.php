@@ -5,16 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scrivi il tuo diario</title>
-    <?php include '../sources/include/bootStrap.html'; ?>
+    <?php include '../../sources/include/bootStrap.html'; ?>
     <?php
 
-    $conn = mysqli_connect("localhost", "root", "", "journee")
-    or die("Connection failed: " . mysqli_connect_error());
+    include '../../sources/include/db.php';
 
     session_start();
 
     if(!isset($_SESSION["id"])){
-        header("Location: ../auth/login.php");
+        header("Location: ../../auth/login/");
         exit;
     }
     

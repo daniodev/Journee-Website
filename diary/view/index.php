@@ -11,12 +11,12 @@
         session_start();
 
         if(!isset($_SESSION["id"])){
-            header("Location: ../auth/login.php");
+            header("Location: ../../auth/login/");
             exit;
         }
         $id = $_SESSION["id"];
 
-        include '../sources/include/db.php';
+        include '../../sources/include/db.php';
         $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
         $pagesQuery = "SELECT idPagina, titolo, giornoScrittura, pensieroGiornaliero FROM pagine where idUtente=". $id. " ORDER BY giornoScrittura DESC";
 
@@ -27,10 +27,10 @@
         echo "<h1 class='h1 text-center'>Benvenuto, " . $userRow["nome"] . " " . $userRow["cognome"] . "</h1>";
         
         echo "<div class='position-absolute top-0 end-0 mt-2 me-2'>";
-        echo "<form action='../diary/write.php' class='d-inline'>";
+        echo "<form action='../write/' class='d-inline'>";
         echo "<button class='btn btn-warning'>Scrivi</button>";
         echo "</form>";
-        echo "<form action='../auth/logout.php' class='d-inline ms-2'>";
+        echo "<form action='../../auth/logout.php' class='d-inline ms-2'>";
         echo "<button class='btn btn-danger'>Logout</button>";
         echo "</form>";
         echo "</div>";

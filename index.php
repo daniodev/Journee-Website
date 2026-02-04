@@ -9,11 +9,12 @@
 <body>
 <?php include 'sources/include/navBar.php'; 
 
-/*session_start();
-if (!isset($_SESSION["ID"])) {
-    header("Location: landing.php");
-    exit;
-}*/
+    session_start();
+
+    if(!isset($_SESSION["id"])) {
+        header("Location: landing.php");
+        exit;
+    }
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

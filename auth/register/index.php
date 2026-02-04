@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione</title>
 
-    <?php include '../sources/include/bootStrap.html'; ?>
+    <?php include '../../sources/include/bootStrap.html'; ?>
     
 </head>
 
@@ -19,7 +19,7 @@
 
                     <h3 class="text-center mb-4">Registrati</h3>
 
-                    <form action="signin.php" method="POST">
+                    <form action="../../auth/register/signin.php" method="POST">
 
                         <div class="mb-3">
                             <label class="form-label">Nome</label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <?php include '../sources/include/viewPasswd.html'; ?>
+                        <?php include '../../sources/include/viewPasswd.html'; ?>
 
                         <div class="mb-3">
                             <label class="form-label">Conferma Password</label>
@@ -69,7 +69,7 @@
                             <button type="submit" class="btn btn-success">
                                 Registrati
                             </button>
-                            <small class="text-center"><a href="login.php">Hai già un account? Accedi</a></small>
+                            <small class="text-center"><a href="../login/">Hai già un account? Accedi</a></small>
                         </div>
 
                     </form>

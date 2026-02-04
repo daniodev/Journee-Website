@@ -1,10 +1,10 @@
 <?php
 
     session_start();
-    include '../sources/include/db.php';
+    include '../../sources/include/db.php';
 
     if(!isset($_POST["id"])){
-        header("Location: view.php");
+        header("Location: ../view/");
         exit;
     }
 
@@ -14,7 +14,7 @@
 
     mysqli_close($conn);
 
-    header("Location: view.php");
+    header("Location: ../view/");
     exit;
 
 ?>

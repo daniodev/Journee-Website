@@ -7,8 +7,8 @@ if(!isset($_GET["id"]) || !isset($_SESSION["id"])){
     exit;
 }
 
-include '../sources/include/db.php';
-include '../sources/include/bootStrap.html';
+include '../../sources/include/db.php';
+include '../../sources/include/bootStrap.html';
 
 $query = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM Pagine where idUtente = ". $_SESSION["id"] . " AND idPagina = " . $_GET["id"];
 $result = mysqli_query($conn, $query);
@@ -27,7 +27,7 @@ echo "<br>";
 echo $page["pensieroGiornaliero"];
 ?>
 
-<form action="deletePage.php" method="POST">
+<form action="../delete/" method="POST">
     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
     <button type="submit" class="btn btn-danger">
         Elimina pagina

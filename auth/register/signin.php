@@ -1,20 +1,20 @@
 <?php 
 
-    include '../sources/include/db.php';
+    include '../../sources/include/db.php';
 
     if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["username"]) || !isset($_POST["nome"]) || !isset($_POST["cognome"]) || !isset($_POST["confirmPassword"])){
-        header("Location: register.php");
+        header("Location: ../register/");
         exit();
     }
 
     $check = $conn -> query("SELECT * FROM utenti where email=". "'" . $_POST["email"]. "'");
     if ($check -> num_rows > 0) {
-        header("Location: register.php?error=1");
+        header("Location: ../register?error=1");
         exit();
     }
 
     if($_POST["password"] != $_POST["confirmPassword"]){
-        header("Location: register.php?error=2");
+        header("Location: ../register?error=2");
         exit();
     }
 
@@ -29,10 +29,8 @@
 
     echo $string;
     if ($conn -> query($string)) {
-         header("Location: login.php");
-    }else{
-        echo "Errore.";
+         header("Location: ../login/");
     }
-    
+
     mysqli_close($conn);
 ?>  

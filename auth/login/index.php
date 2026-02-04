@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <?php include '../sources/include/bootStrap.html'; ?>
+    <?php include '../../sources/include/bootStrap.html'; ?>
 
 <body class="bg-light">
 
@@ -18,7 +18,7 @@
 
                     <h3 class="text-center mb-4">Accedi</h3>
 
-                    <form action="access.php" method="POST">
+                    <form action="/auth/login/access.php" method="POST">
 
                         <?php 
 
@@ -29,7 +29,7 @@
                             $error = $_GET["error"];
                         }
                         if(isset($_SESSION["id"])){
-                            header("Location: ../diary/view.php");
+                            header("Location: ../../diary/view/");
                             exit;
                         }
                         ?>
@@ -52,9 +52,9 @@
                     </form>
 
                     <div class="text-center mt-3">
-                        <small>Non hai un account? <a href="register.php">Registrati</a></small>
+                        <small>Non hai un account? <a href="../register/">Registrati</a></small>
                         <div>
-                        <small><a href="forgotPasswd.php">Password dimenticata?</a></small>
+                        <small><a href="../forgotPassword/">Password dimenticata?</a></small>
                         </div>
                     </div>
                 </div>

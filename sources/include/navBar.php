@@ -41,7 +41,7 @@
             
             include 'db.php';
 
-            session_start();
+            //session_start();
             if(isset($_SESSION["id"])){
 
             $id = $_SESSION["id"];
@@ -50,13 +50,13 @@
             echo "<a href='./diary/view.php'>";
             echo "<img src='../sources/images/user.png' width='35' height='35' class='rounded-circle'>";
             echo "</a>";
-            echo "<a href='./diary/view.php' class='btn btn-warning'>Ciao, " . $_SESSION["nome"] . "</a>";
+            echo "<a href='./diary/view' class='btn btn-warning'>Ciao, " . $_SESSION["nome"] . "</a>";
             echo "</div>";
 
             }else{
 
             echo "<div class='d-flex gap-2'>";
-            echo "<a href='../auth/login.php' class='btn btn-warning'>Accedi all'area riservata</a>";
+            echo "<a href='../auth/login/' class='btn btn-warning'>Accedi all'area riservata</a>";
             echo "</div>";
 
             }

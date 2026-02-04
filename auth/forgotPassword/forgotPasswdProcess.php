@@ -1,8 +1,8 @@
 <?php
-include '../sources/include/db.php';
+include '../../sources/include/db.php';
 
     if(!isset($_POST["email"])){
-    header("Location: forgotPasswd.php");
+    header("Location: ../forgotPassword/");
     exit;
     }
 
