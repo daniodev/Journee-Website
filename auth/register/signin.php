@@ -2,7 +2,7 @@
 
     include '../../sources/include/db.php';
 
-    if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["username"]) || !isset($_POST["nome"]) || !isset($_POST["cognome"]) || !isset($_POST["confirmPassword"])){
+    if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["nome"]) || !isset($_POST["cognome"]) || !isset($_POST["confirmPassword"])){
         header("Location: ../register/");
         exit();
     }
@@ -20,9 +20,8 @@
 
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $string = "INSERT INTO utenti (username, nome, cognome, email, password_hash) values ";
-    $string .= "('". $_POST["username"]. "', ";
-    $string .= "'". $_POST["nome"] . "', ";
+    $string = "INSERT INTO utenti (nome, cognome, email, password_hash) values ";
+    $string .= "('". $_POST["nome"] . "', ";
     $string .= "'". $_POST["cognome"] . "', ";
     $string .= "'". $_POST["email"] . "', ";
     $string .= "'". $password_hash . "')";

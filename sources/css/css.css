@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="sources/css/css.css">
-    <?php include 'sources/include/bootStrap.html'; ?>
-
-    <style>
-
 body {
     margin: 0;
     background-color: #ffbf4a;
@@ -65,28 +53,3 @@ body {
     border-color: #e86f74;
     color: #000;
 }
-
-    </style>
-
-</head>
-<section class="hero">
-    <img src="/sources/images/background.png" class="hero-bg">
-
-    <div class="hero-content">
-        <h1 class="journee">Journee</h1>
-
-        <h1 class="phrases">
-            Been feeling off?<br>
-            You know what it takes..<br>
-            Start Journaling
-        </h1>
-
-        <a href="auth/register/">
-        <button class="btn btn-journee">
-        Get started
-        </button>
-        </a>
-
-    </div>
-
-</section>
