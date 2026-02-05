@@ -3,7 +3,7 @@
 session_start();
 
 // Controlla se l'utente è loggato
-if(!isset($_SESSION["id"])){
+if (!isset($_SESSION["id"])) {
     header("Location: ../../auth/login/");
     exit;
 }
@@ -20,7 +20,8 @@ mysqli_query($conn, $query1);
 $idPagina = mysqli_insert_id($conn);
 
 // Funzione per salvare le scale
-function memorizzaScale($nome, $scala, $conn, $idPagina){
+function memorizzaScale($nome, $scala, $conn, $idPagina)
+{
 
     include '../../sources/include/db.php';
 
@@ -31,8 +32,9 @@ function memorizzaScale($nome, $scala, $conn, $idPagina){
 
     // Ritorna la query di inserimento
     return "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
-           $scala . "', '" . $idPagina . "', '" . $idTipoScala . "')";
+        $scala . "', '" . $idPagina . "', '" . $idTipoScala . "')";
 };
+
 // Salva le varie scale
 mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale1"], $conn, $idPagina));
 mysqli_query($conn, memorizzaScale("Relazioni Sentimentali", $_POST["scale2"], $conn, $idPagina));
