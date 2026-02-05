@@ -5,84 +5,64 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scrivi il tuo diario</title>
+    
     <?php include '../../sources/include/bootStrap.html'; ?>
     <?php
-
     include '../../sources/include/db.php';
-
-    session_start();
-
+      session_start();
+    // Se l'utente non è loggato, viene rimandato alla pagina di login
     if(!isset($_SESSION["id"])){
         header("Location: ../../auth/login/");
         exit;
     }
-    
     ?>
-
 </head>
 
 <body>
     
     <form action="sendData.php" method="post">
         <div class="container-fluid">
-
              
             <div class="row">
-
                 <div class="col-7">
-
                     <div class="row-1">
-                        
                         <h1>How was Today?</h1>
                     </div>
 
                     <div class="row-1">
-
-                        <textarea class="form-control" id="title" name="title" rows="1" cols="7"
-                            placeholder="Write a title" required></textarea>
+                        <textarea class="form-control" id="title" name="title" rows="1" 
+                                  placeholder="Write a title" required></textarea>
                     </div>
 
                     <div class="row-7">
-
-                        <textarea class="form-control" id="comments" name="comments" rows="7" cols="7"
-                            placeholder="Write your thoughts" required></textarea>
+                        <textarea class="form-control" id="comments" name="comments" rows="7" 
+                                  placeholder="Write your thoughts" required></textarea>
                     </div>
                 </div>
 
-            </div>
-
-            
-            <div class="col-5">
-            
-                <div class="row">
-
-                    <?php for($i=1; $i<=3; $i++): ?>
-
-                        <h4>Domanda <?= $i ?></h4>
-                        <?php for($j=5; $j>=1; $j--): ?>
-
-                            <div class="col-1">
-
-                                <div class="form-check">
-
-                                    <input class="form-check-input" type="Radio" name="scale<?= $i ?>" value="<?= $j ?>"
-                                        <?php if($j==5) echo "required"; ?>>
-                                    <label class="form-check-label"><?= $j ?></label>
+                <div class="col-5">
+                    <div class="row">
+                        <?php for($i=1; $i<=3; $i++): ?>
+                            <h4>Domanda <?= $i ?></h4>
+                            
+                            <?php for($j=5; $j>=1; $j--): ?>
+                                <div class="col-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="Radio" 
+                                               name="scale<?= $i ?>" value="<?= $j ?>"
+                                               <?php if($j==5) echo "required"; ?>>
+                                        <label class="form-check-label"><?= $j ?></label>
+                                    </div>
                                 </div>
-                            </div>
-
+                            <?php endfor; ?>
+                        
                         <?php endfor; ?>
-                    
-                    <?php endfor; ?>
-
+                    </div>
                 </div>
-            
             </div>
-
         </div>
 
-
-        <button type="submit">Invia</button>
+        <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 </body>
 

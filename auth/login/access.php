@@ -1,30 +1,44 @@
 <?php 
 
-    if(!isset($_POST["email"]) || !isset($_POST["password"])){
-        header("Location: index.php");
-        exit;
-    }
+// Controlla se email e password sono state inviate
+if(!isset($_POST["email"]) || !isset($_POST["password"])){
+    header("Location: index.php");
+    exit;
+}
 
-    session_start();
+session_start();
 
-    include '../../sources/include/db.php';
-    $query = $conn -> query("SELECT * FROM utenti where email=". "'" .$_POST["email"] . "'");
+// Connessione al database
+include '../../sources/include/db.php';
 
-    if($query->num_rows == 0){
-        header("Location: ../login?error=2");
-        exit;
-    }
-    
-    $row = mysqli_fetch_array($query);
+// Query per trovare l'utente tramite email
+$query = $conn->query("SELECT * FROM utenti WHERE email = '" . $_POST["email"] . "'");
 
-    if(password_verify($_POST["password"], $row["password_hash"])) {
-        $_SESSION["id"] = $row["id"];
-        $_SESSION["nome"] = $row["nome"];
-        header("Location: ../../diary/view/");
-        }else{
-            header("Location: ../login?error=1");
-            exit;
-        }
+// Se l'utente non esiste
+if($query->num_rows == 0){
+    header("Location: ../login?error=2");
+    exit;
+}
 
-    mysqli_close($conn);
+// Prende i dati dell'utente
+$row = mysqli_fetch_array($query);
+
+// Controlla se la password è corretta
+if(password_verify($_POST["password"], $row["password_hash"])) {
+
+    // Salva dati in sessione
+    $_SESSION["id"] = $row["id"];
+    $_SESSION["nome"] = $row["nome"];
+
+    // Vai alla pagina principale
+    header("Location: ../../diary/view/");
+
+} else {
+
+    // Password sbagliata
+    header("Location: ../login?error=1");
+    exit;
+}
+// Chiude la connessione
+mysqli_close($conn);
 ?>

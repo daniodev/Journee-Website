@@ -6,55 +6,59 @@
     <title>Login</title>
 
     <?php include '../../sources/include/bootStrap.html'; ?>
+</head>
 
 <body class="bg-light">
 
 <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-12 col-md-6 col-lg-4">
-
+            <!-- Card login -->
             <div class="card shadow">
                 <div class="card-body p-4">
-
+                    <!-- Titolo -->
                     <h3 class="text-center mb-4">Accedi</h3>
-
+                    <!-- Form login -->
                     <form action="/auth/login/access.php" method="POST">
 
                         <?php 
-
                         session_start();
-
+                       // Gestione errori
                         $error = "";
                         if(isset($_GET["error"])){
                             $error = $_GET["error"];
                         }
+                       // Se già loggato, reindirizza
                         if(isset($_SESSION["id"])){
                             header("Location: ../../diary/view/");
                             exit;
                         }
                         ?>
-
+                        <!-- Campo email -->
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control <?php if($error==2) echo "is-invalid"; ?>" placeholder="email@example.com" required>
+                            <input type="email" name="email" 
+                                   class="form-control <?php if($error==2) echo "is-invalid"; ?>" 
+                                   placeholder="email@example.com" required>
                         </div>
-
-    
+                        <!-- Campo password -->
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control <?php if($error==1) echo "is-invalid"; ?>" required>
+                            <input type="password" name="password" 
+                                   class="form-control <?php if($error==1) echo "is-invalid"; ?>" 
+                                   required>
                         </div>
-
+                        <!-- Bottone login -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success">Login</button>
                         </div>
 
                     </form>
-
+                   <!-- Link utili -->
                     <div class="text-center mt-3">
                         <small>Non hai un account? <a href="../register/">Registrati</a></small>
                         <div>
-                        <small><a href="../forgotPassword/">Password dimenticata?</a></small>
+                            <small><a href="../forgotPassword/">Password dimenticata?</a></small>
                         </div>
                     </div>
                 </div>
