@@ -9,11 +9,21 @@
     <?php include '../../sources/include/bootStrap.html'; ?>
     <?php
     include '../../sources/include/db.php';
-      session_start();
-    // Se l'utente non è loggato, viene rimandato alla pagina di login
+    session_start();
+
+    // Controllo accesso: solo utenti loggati
     if(!isset($_SESSION["id"])){
         header("Location: ../../auth/login/");
         exit;
+    }
+
+    // Ritorna la descrizione (domanda) dato l'id tipologia
+    function getTipologiaById($idTipologia, $conn) {
+
+        $query = "SELECT * FROM TipologiaScale WHERE idTipoScala = " . $idTipologia;
+        $result = mysqli_query($conn, $query);
+        $answer = mysqli_fetch_array($result);
+        return $answer['descrizione'];
     }
     ?>
 </head>
@@ -24,7 +34,9 @@
         <div class="container-fluid">
              
             <div class="row">
+
                 <div class="col-7">
+
                     <div class="row-1">
                         <h1>How was Today?</h1>
                     </div>
@@ -39,11 +51,16 @@
                                   placeholder="Write your thoughts" required></textarea>
                     </div>
                 </div>
-
                 <div class="col-5">
                     <div class="row">
+
                         <?php for($i=1; $i<=3; $i++): ?>
-                            <h4>Domanda <?= $i ?></h4>
+                            <?php
+                                // Recupera la domanda dal DB usando l'indice del ciclo
+                                $question = getTipologiaById($i, $conn);
+                            ?>
+
+                            <h4><?= $question ?></h4>
                             
                             <?php for($j=5; $j>=1; $j--): ?>
                                 <div class="col-1">
@@ -51,17 +68,18 @@
                                         <input class="form-check-input" type="Radio" 
                                                name="scale<?= $i ?>" value="<?= $j ?>"
                                                <?php if($j==5) echo "required"; ?>>
+
                                         <label class="form-check-label"><?= $j ?></label>
                                     </div>
                                 </div>
                             <?php endfor; ?>
                         
                         <?php endfor; ?>
+
                     </div>
                 </div>
             </div>
         </div>
-
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 </body>

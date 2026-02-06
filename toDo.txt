@@ -18,3 +18,6 @@ Back-End:
 
 VPS
 DNS
+
+
+bisogna modificare il db per permettere il salvataggio delle scale preferite
