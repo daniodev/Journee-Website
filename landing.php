@@ -6,6 +6,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="sources/css/css.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <?php include 'sources/include/bootStrap.html'; ?>
 
     <style>
@@ -13,6 +14,7 @@
 body {
     margin: 0;
     background-color: #ffbf4a;
+    font-family: 'IBM Plex Sans', sans-serif;font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .hero {
@@ -36,16 +38,18 @@ body {
 
 .journee {
     margin-top: 5%;
-    font-size: 65px;
+    font-size: 40px;
     color: #000;
     padding-right: 70%;
+    font-weight: bold;
 }
 
 .phrases {
     margin-top: 4%;
-    font-size: 72px;
+    font-size: 70px;
     text-align: center;
     color: #000;
+    font-weight: 600;
 }
 
 .btn-journee {
@@ -53,11 +57,11 @@ body {
     border-color: #fe7d82;
     color: #000;
 
-    font-size: clamp(18px, 2.5vw, 26px);
-    padding: 18px 48px;
+    font-size: 30px;
+    padding: 10px 20px;
 
     border-radius: 40px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .btn-journee:hover {
