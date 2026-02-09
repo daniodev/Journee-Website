@@ -26,6 +26,35 @@
         return $answer['descrizione'];
     }
     ?>
+
+    <style>
+        body {
+            background-image: url('../../sources/images/background.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .btn-register {
+            background-color: #fe7d82;
+            border-color: #fe7d82;
+        }
+
+        .btn-register:hover {
+            background-color: #e86f74;
+            border-color: #e86f74;
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .card-body {
+            background-color: rgba(255, 219, 151, 0.95);
+            backdrop-filter: blur(6px);
+            border-radius: 1rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,7 +91,7 @@
 
                             <h4><?= $question ?></h4>
                             
-                            <?php for($j=5; $j>=1; $j--): ?>
+                            <?php for($j=1; $j<=5; $j++): ?>
                                 <div class="col-1">
                                     <div class="form-check">
                                         <input class="form-check-input" type="Radio" 
@@ -79,8 +108,8 @@
                     </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-lg">Invia</button>
         </div>
-        <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 </body>
 

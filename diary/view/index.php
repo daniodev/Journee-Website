@@ -5,6 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico diario</title>
+
+    <style>
+        body {
+            background-image: url('../../sources/images/background.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .btn-register {
+            background-color: #fe7d82;
+            border-color: #fe7d82;
+        }
+
+        .btn-register:hover {
+            background-color: #e86f74;
+            border-color: #e86f74;
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .card-body {
+            background-color: rgba(255, 219, 151, 0.95);
+            backdrop-filter: blur(6px);
+            border-radius: 1rem;
+        }
+    </style>
 </head>
 <body style="background-color: d090d2;">
     <?php 
