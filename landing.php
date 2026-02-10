@@ -70,6 +70,56 @@ body {
     color: #000;
 }
 
+.mission{
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-top: 42%;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.mission-text {
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 25px;
+}
+
+.features {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 40px 100px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: #ffd778;
+    width: 300px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.feature-card .icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
     </style>
 
 </head>
@@ -90,6 +140,54 @@ body {
         Get started
         </button>
         </a>
+
+        <h1 class="mission">
+            Our Mission
+        </h1>
+
+        <p class="mission-text">
+        Sed eget augue ac nibh condimentum viverra ut ut lectus. <br>
+        Nullam a vulputate nibh. Fusce et turpis posuere, venenatis erat <br>
+        vel, consectetur tellus. Donec eu ex nec metus dignissim <br> 
+        convallis. Praesent efficitur, odio ac iaculis pellentesque, tellus <br>
+        nibh pharetra est, vel accumsan lorem magna luctus nulla. <br>
+        Proin suscipit lectus ac aliquet sollicitudin. Donec convallis, <br>
+        eros sed placerat consequat, ex ligula dapibus ex, quis dictum <br>
+        leo turpis eget augue
+        </p>
+
+            <div class="features">
+        <div class="feature-card">
+            <div class="icon">
+                <img src="sources/images/brain.png" alt="Brain icon">
+            </div>
+            <p>
+                Nullam semper, mauris non pellentesque mollis,
+                mi est blandit metus, nec viverra orci mauris vitae massa.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">
+                <img src="sources/images/crown.png" alt="Crown icon">
+            </div>
+            <p>
+                Nullam semper, mauris non pellentesque mollis,
+                mi est blandit metus, nec viverra orci mauris vitae massa.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">
+                <img src="sources/images/smile.png" alt="Smile icon">
+            </div>
+            <p>
+                Nullam semper, mauris non pellentesque mollis,
+                mi est blandit metus, nec viverra orci mauris vitae massa.
+            </p>
+        </div>
+    </div>
+
 
     </div>
 
