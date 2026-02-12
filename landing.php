@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Journee</title>
 
     <link rel="stylesheet" href="sources/css/css.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,40 +13,25 @@
 
 body {
     margin: 0;
-    background-color: #ffbf4a;
-    font-family: 'IBM Plex Sans', sans-serif;font-family: 'IBM Plex Sans', sans-serif;
-}
-
-.hero {
-    position: relative;
-    width: 100%;
-}
-
-.hero-bg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.hero-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* background-color: #ffbf4a; */
+    background-image: url('sources/images/background.png');
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .journee {
-    margin-top: 5%;
-    font-size: 40px;
-    color: #000;
-    padding-right: 70%;
+    margin-top: clamp(50px, 5vw, 70px);
+    font-size: clamp(10px, 5vw, 40px);
+    color: #000;  
     font-weight: bold;
+    padding-left: 5%;
 }
 
 .phrases {
     margin-top: 4%;
-    font-size: 70px;
+    font-size: clamp(15px, 6vw, 70px);
     text-align: center;
     color: #000;
     font-weight: 600;
@@ -57,11 +42,13 @@ body {
     border-color: #fe7d82;
     color: #000;
 
-    font-size: 30px;
+    font-size: clamp(5px, 5vw, 30px);
     padding: 10px 20px;
 
     border-radius: 40px;
     font-weight: bold;
+    display: block;
+    margin: 0 auto;
 }
 
 .btn-journee:hover {
@@ -73,15 +60,20 @@ body {
 .mission{
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
-    margin-top: 42%;
+    margin-top: 20vh;
     font-weight: bold;
-    font-size: 50px;
+    font-size: clamp(10px, 6vw, 50px);
 }
 
 .mission-text {
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 25px;
+    font-size: clamp(5px, 5vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20vw;
+    margin-right: 20vw;
 }
 
 .features {
@@ -94,7 +86,7 @@ body {
 }
 
 .feature-card {
-    background: #ffd778;
+    background: #fecc68;
     width: 300px;
     padding: 40px 30px;
     border-radius: 20px;
@@ -109,7 +101,6 @@ body {
 
 .feature-card p {
     font-size: 16px;
-    font-style: italic;
 }
 
 .feature-card {
@@ -123,10 +114,7 @@ body {
     </style>
 
 </head>
-<section class="hero">
-    <img src="/sources/images/background.png" class="hero-bg">
-
-    <div class="hero-content">
+    <body>
         <h1 class="journee">Journee</h1>
 
         <h1 class="phrases">
@@ -135,24 +123,24 @@ body {
             Start Journaling
         </h1>
 
-        <a href="auth/register/">
+        <form action="auth/register/">
         <button class="btn btn-journee">
         Get started
         </button>
-        </a>
+        </form>
 
         <h1 class="mission">
             Our Mission
         </h1>
 
         <p class="mission-text">
-        Sed eget augue ac nibh condimentum viverra ut ut lectus. <br>
-        Nullam a vulputate nibh. Fusce et turpis posuere, venenatis erat <br>
-        vel, consectetur tellus. Donec eu ex nec metus dignissim <br> 
-        convallis. Praesent efficitur, odio ac iaculis pellentesque, tellus <br>
-        nibh pharetra est, vel accumsan lorem magna luctus nulla. <br>
-        Proin suscipit lectus ac aliquet sollicitudin. Donec convallis, <br>
-        eros sed placerat consequat, ex ligula dapibus ex, quis dictum <br>
+        Sed eget augue ac nibh condimentum viverra ut ut lectus.
+        Nullam a vulputate nibh. Fusce et turpis posuere, venenatis erat
+        vel, consectetur tellus. Donec eu ex nec metus dignissim
+        convallis. Praesent efficitur, odio ac iaculis pellentesque, tellus
+        nibh pharetra est, vel accumsan lorem magna luctus nulla.
+        Proin suscipit lectus ac aliquet sollicitudin. Donec convallis,
+        eros sed placerat consequat, ex ligula dapibus ex, quis dictum
         leo turpis eget augue
         </p>
 
@@ -187,8 +175,4 @@ body {
             </p>
         </div>
     </div>
-
-
-    </div>
-
-</section>
+</body>

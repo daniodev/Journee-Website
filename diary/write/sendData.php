@@ -20,8 +20,7 @@ mysqli_query($conn, $query1);
 $idPagina = mysqli_insert_id($conn);
 
 // Funzione per salvare le scale
-function memorizzaScale($nome, $scala, $conn, $idPagina)
-{
+function memorizzaScale($nome, $scala, $conn, $idPagina){
 
     include '../../sources/include/db.php';
 
