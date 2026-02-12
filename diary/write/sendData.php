@@ -38,7 +38,7 @@ function memorizzaScale($nome, $scala, $conn, $idPagina)
 // Salva le varie scale
 mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale1"], $conn, $idPagina));
 mysqli_query($conn, memorizzaScale("Relazioni Sentimentali", $_POST["scale2"], $conn, $idPagina));
-mysqli_query($conn, memorizzaScale("frocità", $_POST["scale3"], $conn, $idPagina));
+mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale3"], $conn, $idPagina));
 
 // Torna alla vista principale
 header("Location: ../view/");
