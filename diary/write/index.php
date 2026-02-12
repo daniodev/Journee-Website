@@ -34,12 +34,12 @@
             background-position: center;
         }
 
-        .btn-register {
+        .btn-primary {
             background-color: #fe7d82;
             border-color: #fe7d82;
         }
 
-        .btn-register:hover {
+        .btn-primary:hover {
             background-color: #e86f74;
             border-color: #e86f74;
         }
