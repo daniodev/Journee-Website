@@ -1,15 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Scrivi il tuo diario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journee HomePage</title>
     
     <?php 
-    include 'sources/include/bootStrap.html';
-    include 'sources/include/db.php';
-    session_start();
+        include 'sources/include/bootStrap.html';
+        include 'sources/include/db.php';
+        include 'sources/include/navBar.php';
+        session_start();
+
+        if(!isset($_SESSION["id"])) {
+            header("Location: landing.php");
+            exit;
+        }
     ?>
 
     <style>
