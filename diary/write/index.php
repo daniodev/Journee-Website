@@ -62,13 +62,14 @@
     <form action="sendData.php" method="post">
         <div class="container-fluid">
              
-            <div class="row">
+
+                <div class="row-1">
+                        <h1>How was Today?</h1>
+                </div>
+
+                <div class="row">
 
                 <div class="col-7">
-
-                    <div class="row-1">
-                        <h1>How was Today?</h1>
-                    </div>
 
                     <div class="row-1">
                         <textarea class="form-control" id="title" name="title" rows="1" 
