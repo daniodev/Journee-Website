@@ -118,7 +118,7 @@ body {
 
         <h1 class="phrases">
             Been feeling off?<br>
-            You know what it takes..<br>
+            You know what it takes...<br>
             Start Journaling
         </h1>
 
