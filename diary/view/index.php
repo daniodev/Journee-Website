@@ -8,6 +8,7 @@
 
     <style>
         body {
+            background-color: #ffbf4a;
             background-image: url('../../sources/images/background.png');
             background-size: cover;
             background-position: center;
