@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journee</title>
 
-    <link rel="stylesheet" href="sources/css/css.css">
+
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <?php include 'sources/include/bootStrap.html'; ?>
 
@@ -13,7 +13,6 @@
 
 body {
     margin: 0;
-    /* background-color: #ffbf4a; */
     background-image: url('sources/images/background.png');
     font-family: 'IBM Plex Sans', sans-serif;
     background-size: cover;

@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journee HomePage</title>
-    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <?php 
         include 'sources/include/bootStrap.html';
         include 'sources/include/db.php';
         include 'sources/include/navBar.php';
-        session_start();
 
         if(!isset($_SESSION["id"])) {
             header("Location: landing.php");
@@ -20,10 +19,13 @@
 
     <style>
         body {
-            background-color: #FFC547;
+            margin: 0;
+            background-image: url('sources/images/background.png');
+            font-family: 'IBM Plex Sans', sans-serif;
             background-size: cover;
-            background-position: center;
-        }
+            min-height: 100vh;
+            overflow-x: hidden;
+    }
         
         .btn-primary {
             --bs-btn-font-weight: 600;
@@ -60,13 +62,17 @@
             background-color: #transparent;
             border-color: #000;
         }
+
+        .pharases{
+            margin-top: 25vh;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid text-center"> 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 pharases">
                 <h1>
                     Welcome Madison!<br>
                     Your Journee starts now!

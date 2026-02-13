@@ -29,6 +29,7 @@ if(password_verify($_POST["password"], $row["password_hash"])) {
     // Salva dati in sessione
     $_SESSION["id"] = $row["id"];
     $_SESSION["nome"] = $row["nome"];
+    $_SESSION["cognome"] = $row["cognome"];
 
     // Vai alla pagina principale
     header("Location: ../../diary/view/");

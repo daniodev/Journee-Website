@@ -1,67 +1,66 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #d090d2;" >
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    z-index: 1000;
+    border-radius: 0 0 40px 40px;
+    margin: 0 auto;
+}
+
+.journee{
+    font-size: clamp(15px, 5vw, 35px);
+    color: #000;  
+    font-weight: bold;
+    padding-left: clamp(50px, 5vw, 100px);
+    bottom: 20px;
+}
+.profile{
+    background-color: #ff758a;
+    border-radius: 40px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    
+    width: 50px;
+    height: 50px;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">
-        <img src="../sources/images/example-logo.png" width="30" height="24">
-        Journee</a>
+        <!-- <img src="../sources/images/example-logo.png" width="30" height="24"> -->
+        <h1 class="journee">
+            Journee
+        </h1>
+        </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <style>
-        .nav-item.dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        </style>
-
-        <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Esplora</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contatti</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                </li>
-            </ul>
-
+        <div class="profile">
             <?php
             
             include 'db.php';
 
-            //session_start();
+            session_start();
             if(isset($_SESSION["id"])){
 
-            $id = $_SESSION["id"];
+            $nome = $_SESSION["nome"];
+            $cognome = $_SESSION["cognome"];
 
-            echo "<div class='d-flex gap-2'>";
-            echo "<a href='./diary/view.php'>";
-            echo "<img src='../sources/images/user.png' width='35' height='35' class='rounded-circle'>";
-            echo "</a>";
-            echo "<a href='./diary/view' class='btn btn-warning'>Ciao, " . $_SESSION["nome"] . "</a>";
-            echo "</div>";
-
-            }else{
-
-            echo "<div class='d-flex gap-2'>";
-            echo "<a href='../auth/login/' class='btn btn-warning'>Accedi all'area riservata</a>";
-            echo "</div>";
-
+            $startingLetter = strtoupper($nome[0] . $cognome[0]);
+            echo $startingLetter;
             }
 
-            ?>            
-        </div>
+            ?>   
+        </div>         
     </div>
 </nav>
