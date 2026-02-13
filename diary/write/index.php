@@ -54,6 +54,11 @@
             backdrop-filter: blur(6px);
             border-radius: 1rem;
         }
+
+        .text {
+            background-color: #ffbf4a;
+            border-color: #000;
+        }
     </style>
 </head>
 
@@ -72,12 +77,12 @@
                 <div class="col-7">
 
                     <div class="row-1">
-                        <textarea class="form-control" id="title" name="title" rows="1" 
+                        <textarea class="form-control text" id="title" name="title" rows="1" 
                                   placeholder="Write a title" required></textarea>
                     </div>
 
                     <div class="row-7">
-                        <textarea class="form-control" id="comments" name="comments" rows="7" 
+                        <textarea class="form-control text" id="comments" name="comments" rows="7" 
                                   placeholder="Write your thoughts" required></textarea>
                     </div>
                 </div>
