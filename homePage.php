@@ -15,6 +15,12 @@
             header("Location: landing.php");
             exit;
         }
+        $id = $_SESSION["id"];
+
+        $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
+
+        $user = mysqli_query($conn, $userQuery);
+        $userRow = mysqli_fetch_array($user);
     ?>
 
     <style>
@@ -23,9 +29,10 @@
             background-image: url('sources/images/background.png');
             font-family: 'IBM Plex Sans', sans-serif;
             background-size: cover;
+            background-position: center;
             min-height: 100vh;
             overflow-x: hidden;
-    }
+        }
         
         .btn-primary {
             --bs-btn-font-weight: 600;
@@ -43,28 +50,47 @@
             --bs-btn-active-border-color: #000;
         }
 
-        .btn-primary {
+        .btn-orange {
             color: #000;
             background-color: #fe7d82;
             border-color: #fe7d82;
 
-            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 40px;
+
+            font-weight: bold;
         }
 
-        .btn-primary:hover {
+        .btn-orange:hover {
             color: #000;
             background-color: #e9565b;
             border-color: #e9565b;
         }
 
-        .btn-primary:active {
+        .btn-orange:active {
             color: #000;
             background-color: #transparent;
             border-color: #000;
         }
 
-        .pharases{
+        .pharases {
             margin-top: 25vh;
+        }
+
+        .card {
+            margin: 0;
+            background-color: #ffbf4a;
+            border: 1px solid #000;
+        }
+
+        .cell {
+            border-right: 1px solid #000;
+            border-top: 1px solid #000;
+            padding: 1rem;
+        }
+
+        .cell:last-child {
+            border-right: none;
         }
     </style>
 </head>
@@ -74,26 +100,39 @@
         <div class="row">
             <div class="col-12 pharases">
                 <h1>
-                    Welcome Madison!<br>
+                    Welcome <?php echo $userRow["nome"] ?><br>
                     Your Journee starts now!
                 </h1>
 
-                <button class="btn btn-primary btn-lg">Get started</button>
+                <button class="btn btn-orange btn-lg">First Page!?</button>
             </div>
 
         </div>
 
-        <div class="row">
-            <div class="col">
-                One of three columns
+        <div class="row row-cols-3">
+            <div class="col cell">
+
+                
+                <div class="card p-4">
+                    <h4>Element 1</h4>
+                </div>
+                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
 
-            <div class="col">
-                One of three columns
+            <div class="col cell">
+
+                <div class="card p-4">
+                    <h4>Element 2</h4>
+                </div>
+                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
 
-            <div class="col">
-                One of three columns
+            <div class="col cell">
+                
+                <div class="card p-4">
+                    <h4>Element 3</h4>
+                </div>
+                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
         </div>
     </div>
