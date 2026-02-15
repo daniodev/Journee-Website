@@ -11,6 +11,8 @@
         include 'sources/include/db.php';
         include 'sources/include/navBar.php';
 
+        session_start();
+
         if(!isset($_SESSION["id"])) {
             header("Location: landing.php");
             exit;
@@ -92,7 +94,9 @@
                     Your Journee starts now!
                 </h1>
 
+                <form action="diary/write/index.php">
                 <button class="btn btn-orange btn-lg">First Page!?</button>
+                </form>
             </div>
 
         </div>

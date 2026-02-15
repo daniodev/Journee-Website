@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Scrivi il tuo diario</title>
     
-    <?php include '../../sources/include/bootStrap.html'; ?>
-    <?php
+    <?php include '../../sources/include/bootStrap.html';
     include '../../sources/include/db.php';
     session_start();
 
@@ -29,63 +29,83 @@
 
     <style>
         body {
-            background-image: url('../../sources/images/background.png');
-            background-size: cover;
-            background-position: center;
+        margin: 0;
+        background-image: url('../../sources/images/writeBackground.png');
+        font-family: 'IBM Plex Sans', sans-serif;
+        background-size: cover;
+        overflow-x: hidden;
         }
 
-        .btn-primary {
+        .btn-custom {
             background-color: #fe7d82;
             border-color: #fe7d82;
+            border-radius: 40px;
+            padding-left: 50px;
+            padding-right: 50px;
         }
 
-        .btn-primary:hover {
+        .btn-custom:hover {
             background-color: #e86f74;
             border-color: #e86f74;
         }
 
-        .card {
-            border: none;
-            border-radius: 1rem;
-        }
-
-        .card-body {
-            background-color: rgba(255, 219, 151, 0.95);
-            backdrop-filter: blur(6px);
-            border-radius: 1rem;
-        }
-
         .text {
-            background-color: #ffbf4a;
-            border-color: #000;
+            background: rgba(255, 255, 255, 0.4) !important;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: white solid 2px;
+            border-radius: 20px 20px 0 0;
+            resize: none;
+        }
+        .title{
+            height: 10vh;
+        }
+        .title::placeholder{
+            font-size: clamp(25px, 5vw, 45px);  
+            font-weight: bold;
+            text-align: center;
+        }
+        .content{
+            border: none;
+            border-radius: 0 0 20px 20px;
+            height: 65vh;
+        }
+        .content::placeholder{
+            font-size: clamp(10px, 5vw, 15px);  
+        }
+
+        .inputs{
+            margin-top: 15vh;
+        }
+        .textarea{
+            resize: none !important;
         }
     </style>
 </head>
 
 <body>
-    
+
+    <?php include '../../sources/include/navBar.php'; ?>
+
     <form action="sendData.php" method="post">
         <div class="container-fluid">
              
+                <div class="row justify-content-center">
 
-                <div class="row-1">
-                        <h1>How was Today?</h1>
-                </div>
 
-                <div class="row">
+                    <div class="inputs col-7">
 
-                <div class="col-7">
+                        <div class="row-1">
+                            <textarea class="form-control text title" id="title" name="title" rows="1" 
+                                    placeholder="Title here. A poetic one" required></textarea>
+                        </div>
 
-                    <div class="row-1">
-                        <textarea class="form-control text" id="title" name="title" rows="1" 
-                                  placeholder="Write a title" required></textarea>
+                        <div class="row-7">
+                            <textarea class="form-control text content" id="comments" name="comments" rows="7" 
+                                    placeholder="No hints. It's your day after all" required></textarea>
+                        </div>
                     </div>
-
-                    <div class="row-7">
-                        <textarea class="form-control text" id="comments" name="comments" rows="7" 
-                                  placeholder="Write your thoughts" required></textarea>
-                    </div>
-                </div>
+                <!--
                 <div class="col-5">
                     <div class="row">
 
@@ -112,9 +132,9 @@
                         <?php endfor; ?>
 
                     </div>
-                </div>
+                </div> -->
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">Invia</button>
+            <button type="submit" class="btn btn-custom btn-lg">Done!</button>
         </div>
     </form>
 </body>

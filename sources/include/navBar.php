@@ -19,7 +19,9 @@
     color: #000;  
     font-weight: bold;
     padding-left: clamp(50px, 5vw, 100px);
-    bottom: 20px;
+    margin:0 !important;
+    padding:0 !important;
+    line-height:1;
 }
 .profile{
     background-color: #ff758a;
@@ -30,18 +32,26 @@
     display: flex;
     justify-content: center;
     font-size: 22px;
-    
     width: 50px;
     height: 50px;
+}
+
+.logo{
+    height: clamp(35px, 8vw, 55px);
+    width: auto;
+}
+.navbar-brand{
+  display: flex;
+  align-items: center;
 }
 </style>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">
-        <!-- <img src="../sources/images/example-logo.png" width="30" height="24"> -->
+        <img src="../../sources/images/Logo.png" alt="J" class="logo">
         <h1 class="journee">
-            Journee
+            ournee
         </h1>
         </a>
 
@@ -50,7 +60,6 @@
             
             include 'db.php';
 
-            session_start();
             if(isset($_SESSION["id"])){
 
             $nome = $_SESSION["nome"];
