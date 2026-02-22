@@ -1,29 +1,31 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 .custom-navbar {
     position: fixed;
     top: 0;
     width: 100%;
-
-    background: rgba(255, 255, 255, 0.4) !important;
+    background-color: #FFDB97 !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
     z-index: 1000;
     border-radius: 0 0 40px 40px;
     margin: 0 auto;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
 }
 
-.journee{
+.journee {
     font-size: clamp(15px, 5vw, 35px);
-    color: #000;  
+    color: #000;
     font-weight: bold;
-    padding-left: clamp(50px, 5vw, 100px);
-    margin:0 !important;
-    padding:0 !important;
-    line-height:1;
+    line-height: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: clamp(-27px, -5vw, -35px) !important;
 }
-.profile{
+
+.profile {
     background-color: #ff758a;
     border-radius: 40px;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -36,40 +38,37 @@
     height: 50px;
 }
 
-.logo{
-    height: clamp(35px, 8vw, 55px);
+.logo {
+    height: clamp(50px, 6vw, 70px);
     width: auto;
+    display: block;
 }
-.navbar-brand{
-  display: flex;
-  align-items: center;
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0;
 }
 </style>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#">
-        <img src="../../sources/images/Logo.png" alt="J" class="logo">
-        <h1 class="journee">
-            ournee
-        </h1>
+            <img src="../../sources/images/Logo.png" alt="J" class="logo">
+            <h1 class="journee">ournee</h1>
         </a>
 
         <div class="profile">
             <?php
-            
             include 'db.php';
 
             if(isset($_SESSION["id"])){
-
-            $nome = $_SESSION["nome"];
-            $cognome = $_SESSION["cognome"];
-
-            $startingLetter = strtoupper($nome[0] . $cognome[0]);
-            echo $startingLetter;
+                $nome = $_SESSION["nome"];
+                $cognome = $_SESSION["cognome"];
+                $startingLetter = strtoupper($nome[0] . $cognome[0]);
+                echo $startingLetter;
             }
-
-            ?>   
-        </div>         
+            ?>
+        </div>
     </div>
 </nav>
