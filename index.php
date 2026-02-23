@@ -23,9 +23,14 @@
         // Query per prendere la pagina dell'utente
         $query = "SELECT titolo, giornoScrittura, pensieroGiornaliero 
             FROM Pagine 
-            WHERE idUtente = ". $_SESSION["id"];
+            WHERE idUtente = ". $_SESSION["id"] . "
+            ORDER BY giornoScrittura DESC
+            LIMIT 3";
 
         $result = mysqli_query($conn, $query);
+
+        $pages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
 
         $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
 
@@ -79,7 +84,7 @@
         .card {
             margin: 0;
             background-color: #FFFCE6;
-            border: 1px solid #000;
+            box-shadow: 1px 2px 5px rgba(0,0,0,0.4);
         }
 
         .spacer {
@@ -107,7 +112,7 @@
         </div>
 
         <div class="row phrases">
-            <div class="col-11 align-items-left">
+            <div class="col-11">
                 <h1 class="text float-start">Your Recent Journee's</h1>
             </div>
             <div class="col-1">
@@ -121,23 +126,31 @@
             <div class="col">
 
                 <div class="card p-4">
-                    <h4>Element 1</h4>
+                    <h4><?php echo $pages[0]["titolo"] ?></h4>
+                    <p><?php echo $pages[0]["pensieroGiornaliero"] ?></p>
+                    <p class="float-end"><?php echo $pages[0]["giornoScrittura"] ?></p>
                 </div>
             </div>
 
             <div class="col">
 
                 <div class="card p-4">
-                    <h4>Element 2</h4>
+                    <h4><?php echo $pages[1]["titolo"] ?></h4>
+                    <p><?php echo $pages[1]["pensieroGiornaliero"] ?></p>
+                    <p class="float-end"><?php echo $pages[1]["giornoScrittura"] ?></p>
                 </div>
             </div>
 
             <div class="col">
                 
                 <div class="card p-4">
-                    <h4>Element 3</h4>
+                    <h4><?php echo $pages[2]["titolo"] ?></h4>
+                    <p><?php echo $pages[2]["pensieroGiornaliero"] ?></p>
+                    <p class="float-end"><?php echo $pages[2]["giornoScrittura"] ?></p>
                 </div>
             </div>
+
+            <div class="spacer"></div>
         </div>
     </div>
 </body>
