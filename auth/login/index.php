@@ -92,9 +92,9 @@
                     </form>
                    <!-- Link utili -->
                     <div class="text-center mt-3">
-                        <small>Non hai un account? <a href="../register/">Registrati</a></small>
+                        <small>Non hai un account? <a href="../../auth/register/">Registrati</a></small>
                         <div>
-                            <small><a href="../forgotPassword/">Password dimenticata?</a></small>
+                            <small><a href="../../auth/forgotPassword/">Password dimenticata?</a></small>
                         </div>
                     </div>
                 </div>

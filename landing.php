@@ -8,42 +8,35 @@
 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <?php include 'sources/include/bootStrap.html'; ?>
+    <?php include 'sources/include/navbar.php'; ?>
 
     <style>
 
 body {
     margin: 0;
-    background-image: url('sources/images/background.png');
+    background-image: url('sources/images/backgrounds/landing.png');
     font-family: 'IBM Plex Sans', sans-serif;
     background-size: cover;
     min-height: 100vh;
     overflow-x: hidden;
 }
-
-.journee {
-    margin-top: clamp(50px, 5vw, 70px);
-    font-size: clamp(10px, 5vw, 40px);
-    color: #000;  
-    font-weight: bold;
-    padding-left: 5%;
-}
-
 .phrases {
     margin-top: 4%;
     font-size: clamp(15px, 6vw, 70px);
     text-align: center;
     color: #000;
     font-weight: 600;
+    padding-top: 10%;
 }
 
 .btn-journee {
     background-color: #fe7d82;
     border-color: #fe7d82;
-    color: #000;
+    color: white;
 
     font-size: clamp(5px, 5vw, 30px);
     padding: 10px 20px;
-
+    
     border-radius: 40px;
     font-weight: bold;
     display: block;
@@ -53,7 +46,7 @@ body {
 .btn-journee:hover {
     background-color: #e86f74;
     border-color: #e86f74;
-    color: #000;
+    color: white;
 }
 
 .mission{
@@ -71,12 +64,19 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 20vw;
-    margin-right: 20vw;
 }
 
+.mission-div {
+    background-color: #FFECC6;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    margin: 0 20vw;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
 .features {
-    margin-top: 80px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -85,9 +85,9 @@ body {
 }
 
 .feature-card {
-    background: #fecc68;
+    background: rgba(255, 255, 255, 0.4) !important;
     width: 300px;
-    padding: 40px 30px;
+    padding: 90px 30px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -101,20 +101,10 @@ body {
 .feature-card p {
     font-size: 16px;
 }
-
-.feature-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
     </style>
 
 </head>
     <body>
-        <h1 class="journee">Journee</h1>
 
         <h1 class="phrases">
             Been feeling off?<br>
@@ -128,6 +118,7 @@ body {
         </button>
         </form>
 
+        <div class="mission-div p-50">
         <h1 class="mission">
             Our Mission
         </h1>
@@ -142,6 +133,7 @@ body {
         eros sed placerat consequat, ex ligula dapibus ex, quis dictum
         leo turpis eget augue
         </p>
+        </div>
 
             <div class="features">
         <div class="feature-card">

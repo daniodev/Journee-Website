@@ -11,8 +11,8 @@
     z-index: 1000;
     border-radius: 0 0 40px 40px;
     margin: 0 auto;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
 
 .journee {
@@ -49,6 +49,20 @@
     align-items: center;
     gap: 0;
 }
+.login{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 4vh;
+}
+.signup{
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 4vh;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
@@ -58,17 +72,28 @@
             <h1 class="journee">ournee</h1>
         </a>
 
-        <div class="profile">
-            <?php
-            include 'db.php';
+        <?php
 
-            if(isset($_SESSION["id"])){
-                $nome = $_SESSION["nome"];
-                $cognome = $_SESSION["cognome"];
-                $startingLetter = strtoupper($nome[0] . $cognome[0]);
-                echo $startingLetter;
-            }
-            ?>
-        </div>
+        if(!isset($_SESSION["id"])){
+            echo "<div class='d-flex gap-1'>";
+            echo "<a href='/auth/login/' class='login'>Log in | </a>";
+            echo "<a href='/auth/register/' class='signup'>Sign in</a>";
+            echo "</div>";
+
+        }else{
+
+            echo "<div class='profile'>";
+                
+                include 'db.php';
+
+                if(isset($_SESSION["id"])){
+                    $nome = $_SESSION["nome"];
+                    $cognome = $_SESSION["cognome"];
+                    $startingLetter = strtoupper($nome[0] . $cognome[0]);
+                    echo $startingLetter;
+                }
+        }
+        echo "</div>";
+        ?>
     </div>
 </nav>
