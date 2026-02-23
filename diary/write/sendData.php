@@ -1,8 +1,6 @@
 <?php
-
 session_start();
 
-// Controlla se l'utente è loggato
 if (!isset($_SESSION["id"])) {
     header("Location: ../../auth/login/");
     exit;
@@ -10,36 +8,40 @@ if (!isset($_SESSION["id"])) {
 
 include '../../sources/include/db.php';
 
-// Inserisce una nuova pagina
-$query1 = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) VALUES (" .
-    $_SESSION["id"] . ", '" . $_POST["title"] . "', '" . date('Y-m-d H:i:s') . "', '" . $_POST["comments"] . "')";
+// 1. Sanificazione dati per evitare SQL Injection
+$idUtente = $_SESSION["id"];
+$titolo = mysqli_real_escape_string($conn, $_POST["title"]);
+$pensiero = mysqli_real_escape_string($conn, $_POST["comments"]);
+$dataOggi = date('Y-m-d H:i:s');
 
-mysqli_query($conn, $query1);
+// 2. Inserimento pagina
+$queryPagina = "INSERT INTO pagine (idUtente, titolo, giornoScrittura, pensieroGiornaliero) 
+                VALUES ('$idUtente', '$titolo', '$dataOggi', '$pensiero')";
 
-// Prende l'id della pagina appena creata
-$idPagina = mysqli_insert_id($conn);
+if (mysqli_query($conn, $queryPagina)) {
+    $idPagina = mysqli_insert_id($conn);
 
-// Funzione per salvare le scale
-function memorizzaScale($nome, $scala, $conn, $idPagina){
+    // 3. Salvataggio Scale selezionate
+    // $_POST['tipologie'] contiene gli ID delle checkbox spuntate
+    if (isset($_POST['tipologie']) && is_array($_POST['tipologie'])) {
+        foreach ($_POST['tipologie'] as $idTipoScala) {
+            // Recuperiamo il valore del range corrispondente all'ID della scala
+            $voto = intval($_POST['valutazione'][$idTipoScala]);
+            
+            $queryScale = "INSERT INTO scale (valutazione, idPagina, idTipoScala) 
+                           VALUES ('$voto', '$idPagina', '$idTipoScala')";
+            mysqli_query($conn, $queryScale);
+        }
+    }
 
-    include '../../sources/include/db.php';
+    // 4. Aggiorna il flag configurazioneCompletata (come richiesto inizialmente)
+    // Questo permette all'utente di non essere più rediretto forzatamente
+    $queryUpdate = "UPDATE scalePreferite SET configurazioneCompletata = 1 WHERE idUtente = $idUtente";
+    mysqli_query($conn, $queryUpdate);
 
-    // Trova il tipo scala dal nome
-    $res = mysqli_query($conn, "SELECT idTipoScala FROM tipologiascale WHERE nome='" . $nome . "'");
-    $row = mysqli_fetch_assoc($res);
-    $idTipoScala = $row['idTipoScala'];
-
-    // Ritorna la query di inserimento
-    return "INSERT INTO scale (valutazione, idPagina, idTipoScala) VALUES ('" .
-        $scala . "', '" . $idPagina . "', '" . $idTipoScala . "')";
-};
-
-// Salva le varie scale
-/*mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale1"], $conn, $idPagina));
-mysqli_query($conn, memorizzaScale("Relazioni Sentimentali", $_POST["scale2"], $conn, $idPagina));
-mysqli_query($conn, memorizzaScale("Lavoro", $_POST["scale3"], $conn, $idPagina));*/
-
-// Torna alla vista principale
-header("Location: ../view/");
-exit;
+    header("Location: ../view/index.php?status=success");
+    exit;
+} else {
+    echo "Errore nell'inserimento: " . mysqli_error($conn);
+}
 ?>
