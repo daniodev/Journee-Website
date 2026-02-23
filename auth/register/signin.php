@@ -7,7 +7,7 @@
         exit();
     }
     // Verifico se l'email esiste già nel database
-    $check = $conn -> query("SELECT * FROM utenti where email=". "'" . $_POST["email"]. "'");
+    $check = $conn -> query("SELECT * FROM UTENTI where email=". "'" . $_POST["email"]. "'");
     if ($check -> num_rows > 0) {
         header("Location: ../register?error=1");
         exit();
@@ -20,7 +20,7 @@
     // Creo una versione sicura (hash) della password
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $string = "INSERT INTO utenti (nome, cognome, email, password_hash) values ";
+    $string = "INSERT INTO UTENTI (nome, cognome, email, password_hash) values ";
     $string .= "('". $_POST["nome"] . "', ";
     $string .= "'". $_POST["cognome"] . "', ";
     $string .= "'". $_POST["email"] . "', ";

@@ -27,7 +27,7 @@
   <style>
     body {
       margin: 0;
-      background-image: url('../../sources/images/writeBackground.png');
+      background-image: url('../../sources/images/backgrounds/write.png');
       font-family: 'IBM Plex Sans', sans-serif;
       background-size: 100% 100%;
       overflow-x: hidden;

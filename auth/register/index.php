@@ -9,7 +9,7 @@
 
     <style>
         body {
-            background-image: url('../../sources/images/background.png');
+            background-image: url('../../sources/images/backgrounds/write.png');
             background-size: cover;
             background-position: center;
         }

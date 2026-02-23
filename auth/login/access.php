@@ -12,7 +12,7 @@ session_start();
 include '../../sources/include/db.php';
 
 // Query per trovare l'utente tramite email
-$query = $conn->query("SELECT * FROM utenti WHERE email = '" . $_POST["email"] . "'");
+$query = $conn->query("SELECT * FROM UTENTI WHERE email = '" . $_POST["email"] . "'");
 
 // Se l'utente non esiste
 if($query->num_rows == 0){
