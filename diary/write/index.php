@@ -147,7 +147,7 @@
 
           <div class="row-1">
             <textarea class="form-control text title" id="title" name="title" rows="1"
-                      placeholder="Title here. A poetic one" required></textarea>
+                      placeholder="Title here. A poetic one?" required></textarea>
           </div>
 
           <div class="row-7">

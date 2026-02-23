@@ -20,6 +20,13 @@
         }
         $id = $_SESSION["id"];
 
+        // Query per prendere la pagina dell'utente
+        $query = "SELECT titolo, giornoScrittura, pensieroGiornaliero 
+            FROM Pagine 
+            WHERE idUtente = ". $_SESSION["id"];
+
+        $result = mysqli_query($conn, $query);
+
         $userQuery = "SELECT nome, cognome FROM UTENTI where id=".$id;
 
         $user = mysqli_query($conn, $userQuery);
@@ -29,7 +36,7 @@
     <style>
         body {
             margin: 0;
-            background-image: url('sources/images/background.png');
+            background-image: url('sources/images/backgrounds/home.png');
             font-family: 'IBM Plex Sans', sans-serif;
             background-size: cover;
             background-position: center;
@@ -37,10 +44,15 @@
             overflow-x: hidden;
         }
 
-        .btn-orange {
-            color: #000;
-            background-color: #fe7d82;
-            border-color: #fe7d82;
+        .text {
+            color: #FFFFFF;
+            text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-purple {
+            color: #FFFFFF;
+            background-color: #5B47DF;
+            border-color: #5B47DF;
 
             padding: 10px 20px;
             border-radius: 40px;
@@ -48,40 +60,30 @@
             font-weight: bold;
         }
 
-        .btn-orange:hover {
-            color: #000;
-            background-color: #e9565b;
-            border-color: #e9565b;
+        .btn-purple:hover {
+            color: #FFFFFF;
+            background-color: #452EDB;
+            border-color: #452EDB;
         }
 
-        .btn-orange:active {
+        .btn-purple:active {
             color: #000;
             background-color: #transparent;
             border-color: #000;
         }
 
-        .pharases {
+        .phrases {
             margin-top: 25vh;
         }
 
         .card {
             margin: 0;
-            background-color: transparent;
+            background-color: #FFFCE6;
             border: 1px solid #000;
         }
 
-        .cell {
-            border-right: 1px solid #000;
-            border-top: 1px solid #000;
-            padding: 1rem;
-        }
-
-        .cell:last-child {
-            border-right: none;
-        }
-
         .spacer {
-            padding-top: 200px;
+            padding-top: 12vh;
         }
     </style>
 </head>
@@ -89,43 +91,52 @@
 <body>
     <div class="container-fluid text-center"> 
         <div class="row">
-            <div class="col-12 pharases">
-                <h1>
-                    Welcome <?php echo $userRow["nome"] ?><br>
-                    Your Journee starts now!
+            <div class="col-12 phrases">
+                <h1 class="text">
+                    Welcome <?php echo $userRow["nome"] ?>!<br>
+                    How you feeling today?
                 </h1>
 
+                <div class="spacer"></div>
+
                 <form action="diary/write/index.php">
-                <button class="btn btn-orange btn-lg">First Page!?</button>
+                <button class="btn btn-purple btn-lg">First Page!?</button>
                 </form>
             </div>
 
         </div>
 
-        <div class="row spacer">
-            <div class="col cell">
+        <div class="row phrases">
+            <div class="col-11 align-items-left">
+                <h1 class="text float-start">Your Recent Journee's</h1>
+            </div>
+            <div class="col-1">
+                <form action="diary/view/index.php">
+                <button class="btn btn-purple btn-lg">-></button>
+                </form>
+            </div>
+        </div>
 
-                
+        <div class="row">
+            <div class="col">
+
                 <div class="card p-4">
                     <h4>Element 1</h4>
                 </div>
-                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
 
-            <div class="col cell">
+            <div class="col">
 
                 <div class="card p-4">
                     <h4>Element 2</h4>
                 </div>
-                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
 
-            <div class="col cell">
+            <div class="col">
                 
                 <div class="card p-4">
                     <h4>Element 3</h4>
                 </div>
-                <button class="btn btn-orange btn-lg">Let's Go!</button>
             </div>
         </div>
     </div>
