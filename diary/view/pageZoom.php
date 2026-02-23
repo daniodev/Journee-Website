@@ -6,7 +6,11 @@ if(!isset($_GET["id"]) || !isset($_SESSION["id"])){
     header("Location: index.php");
     exit;
 }
-
+/*
+ if(!$_SESSION["ScalePrefScelte"]){
+            header("Location: ../../diary/write/scaleSelection.php");
+        }
+*/
 include '../../sources/include/db.php';
 include '../../sources/include/bootStrap.html';
 

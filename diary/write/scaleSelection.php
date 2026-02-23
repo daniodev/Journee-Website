@@ -48,10 +48,11 @@ $result = mysqli_query($conn, $query);
     ?>
 </head>
 <body>
+    <form action="sendScales.php" method="post">
    <ul class="list-group">
 <?php while($row = mysqli_fetch_array($result)): ?>
 
-    <li class="list-group-item">
+    <li class="list-group-item" >
         <input class="form-check-input me-1 limit-check"
                type="checkbox"
                name="tipologie[]"
@@ -84,7 +85,12 @@ document.querySelectorAll(".limit-check").forEach(cb => {
 
 
 <?php
-$_POST["tipologie"]; // array di idTipoScala selezionati
+//$_POST["tipologie"]; // array di idTipoScala selezionati
 ?>
+        </div><input type="hidden" name="abilita_accesso" value="1">
+        
+            <button type="submit" class="btn btn-primary btn-lg">Conferma</button>
+        </div>
+</form>
 </body>
 </html>

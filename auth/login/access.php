@@ -32,9 +32,22 @@ if(password_verify($_POST["password"], $row["password_hash"])) {
     $_SESSION["cognome"] = $row["cognome"];
 
     // Vai alla pagina principale
+    // Vai alla pagina principale 
+    /*
+    $query= $conn->query("SELECT * FROM scalepreferite WHERE idUtente = '" . $row["id"] . "'");
+        if($query->num_rows == 0){
+        header("Location: ../../diary/write/scaleSelection.php");
+        $_SESSION["ScalePrefScelte"]=0;
+    }else{
+  // Vai alla pagina principale
+    $_SESSION["ScalePrefScelte"]=1;
     header("Location: ../../diary/view/");
 
+    
+}
+*/
 } else {
+    
 
     // Password sbagliata
     header("Location: ../login?error=1");

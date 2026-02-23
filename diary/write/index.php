@@ -16,6 +16,14 @@
       exit;
     }
 
+/*
+    if(!$_SESSION["ScalePrefScelte"]){
+            header("Location: ../write/scaleSelection.php");
+        }
+            */
+
+    
+    // Ritorna la descrizione (domanda) dato l'id tipologia
     function getTipologiaById($idTipologia, $conn) {
       $query = "SELECT * FROM TipologiaScale WHERE idTipoScala = " . $idTipologia;
       $result = mysqli_query($conn, $query);

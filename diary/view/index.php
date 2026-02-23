@@ -45,8 +45,12 @@
             header("Location: ../../auth/login/");
             exit;
         }
+        /*
+        if(!$_SESSION["ScalePrefScelte"]){
+            header("Location: ../../diary/write/scaleSelection.php");
+        }
         $id = $_SESSION["id"];
-
+*/
         include '../../sources/include/db.php';
 
         // Query per recuperare dati utente e le pagine del diario (dalla più recente)
