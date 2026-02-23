@@ -137,10 +137,10 @@
                                        name="tipologie[]" value="<?= $row['idTipoScala'] ?>" 
                                        id="c<?= $row['idTipoScala'] ?>">
                                 <label class="form-check-label fw-bold" for="c<?= $row['idTipoScala'] ?>">
-                                    <?= $row["nome"] ?>
+                                    <?= $row["descrizione"] ?>
                                 </label>
                             </div>
-                            <small class="text-muted"><?= $row["descrizione"] ?></small>
+                            <small class="text-muted"><?= $row["nome"] ?></small>
                         </div>
                         
                         <div class="px-3">
