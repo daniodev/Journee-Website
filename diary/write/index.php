@@ -52,6 +52,8 @@
       backdrop-filter: blur(5px);
       border-radius: 20px;
       resize: none;
+      margin-top: 30px;
+      margin-bottom: 10px;
     }
 
     /* Campo titolo */
@@ -77,7 +79,6 @@
       overflow-y: auto;
     }
 
-    /* Barra inferiore con data e navigazione */
     .bottom-bar {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -85,8 +86,48 @@
       padding-bottom: 50px;
     }
 
-    /* Nasconde uno step */
     .hidden-step { display: none !important; }
+
+      .date-pill {
+        background: #ffffffd9;
+        border: 2px solid #fff;
+        border-radius: 999px;
+        padding: 10px 14px;
+        width: fit-content;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .pager {
+        justify-self: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #ffffffd9;
+        border: 2px solid #fff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        user-select: none;
+    }
+
+    .pager-btn {
+        width: 26px;
+        height: 26px;
+        border: none;
+        border-radius: 999px;
+        background: #fff;
+        line-height: 26px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .pager-text {
+        font-weight: 700;
+        font-size: 14px;
+        opacity: .85;
+    }
   </style>
 </head>
 

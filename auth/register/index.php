@@ -110,7 +110,7 @@
                                 Registrati
                             </button>
                             <small class="text-center mt-2">
-                                <a href="../login/">Hai già un account? Accedi</a>
+                                <a href="../../auth/login/">Hai già un account? Accedi</a>
                             </small>
                         </div>
 
