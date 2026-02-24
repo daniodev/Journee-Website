@@ -15,12 +15,13 @@
 
         include 'sources/include/bootStrap.html';
         include 'sources/include/db.php';
-        include 'sources/include/loggedNavBar.php';
 
         if(!isset($_SESSION["id"])) {
             header("Location: landing.php");
             exit;
         }
+
+        include 'sources/include/loggedNavBar.php';
 
         $id = $_SESSION["id"];
 
