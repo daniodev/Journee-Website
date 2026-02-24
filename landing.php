@@ -40,6 +40,7 @@ body {
     font-weight: bold;
     display: block;
     margin: 0 auto;
+    margin-top: 3%;
 }
 
 .btn-journee:hover {
@@ -60,7 +61,7 @@ body {
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: clamp(5px, 5vw, 20px);
-    display: flex;
+    disply: flex;
     flex-direction: column;
     gap: 10px;
 }
@@ -69,7 +70,7 @@ body {
     background-color: #FFECC6;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    margin: 0 20vw;
+    margin: 0 30vw;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
@@ -86,10 +87,11 @@ body {
 .feature-card {
     background: rgba(255, 255, 255, 0.4) !important;
     width: 300px;
-    padding: 90px 30px;
+    padding: 80px 30px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    margin-top: 5%;
 }
 
 .feature-card .icon {
@@ -106,31 +108,31 @@ body {
     <body>
 
         <h1 class="phrases">
-            Been feeling off?<br>
-            You know what it takes...<br>
-            Start Journaling
+            Giornata turbolenta? <br>
+            Lasciati andare.. <br>
+            Siamo con te, tutti i Journee!
         </h1>
 
         <form action="auth/register/">
         <button class="btn btn-journee">
-        Get started
+        Inizia ora!
         </button>
         </form>
 
         <div class="mission-div p-50">
         <h1 class="mission">
-            Our Mission
+            La nostra missione
         </h1>
 
         <p class="mission-text">
-        Sed eget augue ac nibh condimentum viverra ut ut lectus.
-        Nullam a vulputate nibh. Fusce et turpis posuere, venenatis erat
-        vel, consectetur tellus. Donec eu ex nec metus dignissim
-        convallis. Praesent efficitur, odio ac iaculis pellentesque, tellus
-        nibh pharetra est, vel accumsan lorem magna luctus nulla.
-        Proin suscipit lectus ac aliquet sollicitudin. Donec convallis,
-        eros sed placerat consequat, ex ligula dapibus ex, quis dictum
-        leo turpis eget augue
+        È da un po’ che pensi di concederti dello spazio, vero?
+        <br>Ricostruire giornate, processare avvenimenti, trovare risposte..
+        <br>Se sei qui è probabile che la tua vita sia più impegnativa di 
+        <br>quella dei tuoi coetanei, o solamente più difficile da elaborare..
+        
+        <br><br>La soluzione che abbiamo riservato per te richiede costanza.
+        <br>Si tratta della scrittura di un diario. 
+        <br>È la forma di introspezione più semplice e studi provano sia anche la più efficace!
         </p>
         </div>
 
@@ -140,8 +142,7 @@ body {
                 <img src="sources/images/brain.png" alt="Brain icon">
             </div>
             <p>
-                Nullam semper, mauris non pellentesque mollis,
-                mi est blandit metus, nec viverra orci mauris vitae massa.
+                Connetterai pensieri e sentimenti, raggiungerai una consapevolezza fondata sulla conoscenza della tua persona!
             </p>
         </div>
 
@@ -150,8 +151,7 @@ body {
                 <img src="sources/images/crown.png" alt="Crown icon">
             </div>
             <p>
-                Nullam semper, mauris non pellentesque mollis,
-                mi est blandit metus, nec viverra orci mauris vitae massa.
+                Ripercorrendo le giornate,capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
             </p>
         </div>
 
@@ -160,8 +160,7 @@ body {
                 <img src="sources/images/smile.png" alt="Smile icon">
             </div>
             <p>
-                Nullam semper, mauris non pellentesque mollis,
-                mi est blandit metus, nec viverra orci mauris vitae massa.
+                Potrai vantare un umore più stabile che mai, basato sulle solide fondamenta dalla chiarezza mentale!
             </p>
         </div>
     </div>

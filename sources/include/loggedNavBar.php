@@ -27,7 +27,7 @@
 }
 
 .expand-btn img {
-    width: 70px;/
+    width: 70px;
     height: 70px;
 }
 
@@ -116,16 +116,118 @@
     background-color: #fff0f0;
     color: #e84c4c;
 }
+
+.offcanvas .btn-close {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1055;
+  background-image: none !important;
+  background: transparent !important;
+}
+.offcanvas-title{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    margin-top: 10%;
+}
+.no-pages{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    color: #000;
+}
+
+/* Diary items nel pannello */
+.diary-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.diary-item:last-child {
+  border-bottom: none;
+}
+
+.diary-date {
+  min-width: 50px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-align: center;
+  color: gray;
+}
+
+.diary-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.diary-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  line-height: 2;
+}
+
+.diary-actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.btn-view, .btn-delete {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+    border-radius: 999px;
+}
+
+.btn-view {
+  color: #000;
+}
+
+.btn-view:hover {
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  color: white;
+}
+
+.btn-delete:hover {
+  transform: scale(1.05);
+}
+
+  
+  .diary-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 </style>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid px-4">
-        <!-- Expand button a sinistra -->
-        <div class="expand-btn">
-            <img src="../../sources/images/ExpanIcon.png" alt="Expand"> <!-- ← nome corretto -->
+
+        <div class="expand-btn" data-bs-toggle="offcanvas" data-bs-target="#leftPanel" aria-controls="leftPanel">
+            <img src="../../sources/images/ExpanIcon.png" alt="Expand">
         </div>
 
-        <!-- Journee centrata con J+O attaccate -->
         <div class="brand-center">
             <img src="../../sources/images/Logo.png" alt="J" class="logo">
             <h1 class="journee">ournee</h1>
@@ -162,3 +264,69 @@
         <?php } ?>
     </div>
 </nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="leftPanel" aria-labelledby="leftPanelLabel">
+    <div class="offcanvas-header">
+            <h2 class="offcanvas-title" id="leftPanelLabel">I tuoi Journee</h2>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <img src="../../sources/images/ExpanIcon.png" alt="Expand" width="70" height="70">
+                </button>
+    </div>
+    <hr>
+        <div class="offcanvas-body">
+                <ul class="list-unstyled">
+                
+                <?php
+
+                $id = $_SESSION["id"];
+
+                $query = "SELECT idPagina, titolo, giornoScrittura, pensieroGiornaliero FROM pagine WHERE idUtente = ". $id . " ORDER BY giornoScrittura DESC";
+                $result = mysqli_query($conn, $query);
+                $pages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+                if (empty($pages)) {
+                echo "<div class='no-pages'>
+                            Sembra te non abbia scritto ancora nulla.  
+                             <a href='../../diary/write/'>Inizia ora!</a>
+                      </div>"; ?>
+                <?php
+            } else {
+            foreach ($pages as $page) {
+                $idPagina = $page["idPagina"];
+                $titolo = !empty($page["titolo"]) 
+                        ? htmlspecialchars($page["titolo"]) 
+                        : "Senza titolo";
+                $testo = !empty($page["pensieroGiornaliero"]) 
+                        ? htmlspecialchars(substr($page["pensieroGiornaliero"], 0, 100)) . "..."
+                        : "Nessun pensiero registrato...";
+                $data = date("d/m", strtotime($page["giornoScrittura"]));
+            ?>
+                <!-- ITEM DEL DIARY - dentro il foreach -->
+                <div class="diary-item">
+                    <div class="diary-date"><?= $data ?></div>
+                    <div class="diary-content">
+                        <div class="diary-title"><?= $titolo ?></div>
+                        <div class="diary-actions">
+                            <button class="btn-view">
+                                                <a href="../../diary/view/?id=<?= $idPagina ?>">
+                                <img src="../../sources/images/eyeOpen.png" alt="View" width="24" height="24">
+                                </a>
+                            </button>
+                            <button class="btn-delete">
+                                <a href="../../diary/delete/?id=<?= $idPagina ?>"
+                                onclick="return confirm('Sei sicuro di voler eliminare questa pagina? L\'operazione è irreversibile.')">
+                                <img src="../../sources/images/recicleBin.png" alt="Delete" width="24" height="24">
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        <?php
+        }
+
+            }
+            ?>
+                
+                </ul>
+        </div>
+</div>

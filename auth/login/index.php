@@ -22,12 +22,13 @@
         }
         .card {
             border: none;
-            border-radius: 1rem;
+            border-radius: 20px !important;
+            background: rgba(255, 255, 255, 0.4) !important;
         }
 
         .card-body {
-            background-color: rgba(255, 219, 151, 0.95);
-            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.4) !important;
+            border-radius: 20px !important;
         }
     </style>
 
@@ -35,7 +36,8 @@
 </head>
 
 <body class="bg-light">
-
+<?php include 
+'../../sources/include/navbar.php'; ?>
 <?php
     $error = 0;
     if (isset($_GET["error"])) {
@@ -65,7 +67,6 @@
                     <form action="/auth/login/access.php" method="POST">
 
                         <?php 
-                        session_start();
                         if(isset($_SESSION["id"])){
                             header("Location: ../../diary/view/");
                             exit;
@@ -94,9 +95,6 @@
                    <!-- Link utili -->
                     <div class="text-center mt-3">
                         <small>Non hai un account? <a href="../../auth/register/">Registrati</a></small>
-                        <div>
-                            <small><a href="../../auth/forgotPassword/">Password dimenticata?</a></small>
-                        </div>
                     </div>
                 </div>
             </div>

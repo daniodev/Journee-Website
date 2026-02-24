@@ -63,7 +63,7 @@
     font-weight: bold;
     text-decoration: none;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 4vh;
+    font-size: 3vh;
 }
 
 .signup {
@@ -71,7 +71,7 @@
     font-weight: bold;
     text-decoration: none;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 4vh;
+    font-size: 3vh;
 }
 
 .dropdown-menu {

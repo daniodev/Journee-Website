@@ -52,6 +52,7 @@
         .text {
             color: #FFFFFF;
             text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+            font-size: clamp(15px, 5vw, 50px);
         }
 
         .btn-purple {
@@ -108,7 +109,7 @@
                 <div class="spacer"></div>
 
                 <form action="diary/write/">
-                    <button class="btn btn-purple btn-lg">First Page!?</button>
+                    <button class="btn btn-purple btn-lg">Write now</button>
                 </form>
             </div>
         </div>
@@ -126,13 +127,15 @@
 
         <div class="row">
             <?php 
-            if (empty($pages)) {
-                echo "<div class='col-12'>
-                        <h3 class='empty-msg'>
-                            Non hai ancora scritto nulla. Inizia il tuo viaggio oggi!
-                        </h3>
-                      </div>";
-            } else {
+            if (empty($pages)) { ?>
+                <!-- <div class="col-md-4">
+                            <div class="card p-4 text-start">
+                                <h4 class="fw-bold">Inizia a scrivere ora!</h4>
+                                <p class="flex-grow-1"></p>
+                                <small class="text-muted mt-auto text-end">DD/MM/YYYY</small>
+                            </div>
+                    </div> -->
+            <?php } else {
                 foreach ($pages as $page) {
 
                     $idPagina = $page["idPagina"];

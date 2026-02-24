@@ -28,11 +28,11 @@
         .card {
             border: none;
             border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.4) !important;
         }
 
         .card-body {
-            background-color: rgba(255, 219, 151, 0.95);
-            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.4) !important;
             border-radius: 1rem;
         }
     </style>
@@ -46,7 +46,7 @@
         $error = (int) $_GET["error"];
     }
 ?>
-
+<?php include '../../sources/include/navbar.php'; ?>
 <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-12 col-md-6 col-lg-4">
