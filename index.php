@@ -70,6 +70,20 @@
             border-color: #452EDB;
         }
 
+        .btn-arrow {
+            color: #FFFFFF;
+            background-color: transparent;
+            border-color: transparent;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+        }
+
+        .btn-arrow:hover {
+            background-color: transparent;
+            border-color: transparent;
+        }
+
         .phrases {
             margin-top: 25vh;
         }
@@ -121,7 +135,7 @@
             </div>
             <div class="col-1">
                 <form action="diary/view/index.php">
-                    <button class="btn btn-purple btn-lg">→</button>
+                    <button class="btn btn-arrow btn-lg">→</button>
                 </form>
             </div>
         </div>
