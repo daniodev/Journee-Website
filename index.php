@@ -29,7 +29,7 @@
 
         // Query per ottenere le ultime 3 pagine scritte dall'utente
         $query = "SELECT titolo, giornoScrittura, pensieroGiornaliero 
-                  FROM Pagine 
+                  FROM pagine 
                   WHERE idUtente = ". $id . "
                   ORDER BY giornoScrittura DESC
                   LIMIT 3";
@@ -105,7 +105,7 @@
                 <h1 class="text">
                     <!-- Visualizza il nome dell'utente -->
                     Welcome <?php echo $userRow["nome"] ?>!<br>
-                    How you feeling today?
+                    How you feelin' today?
                 </h1>
 
                 <div class="spacer"></div>
@@ -125,7 +125,7 @@
             <div class="col-1">
                 <!-- Pulsante per vedere tutte le pagine -->
                 <form action="diary/view/index.php">
-                    <button class="btn btn-purple btn-lg">-></button>
+                    <button class="btn btn-purple btn-lg">→</button>
                 </form>
             </div>
         </div>
