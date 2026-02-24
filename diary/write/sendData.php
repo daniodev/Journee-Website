@@ -36,8 +36,8 @@ if (mysqli_query($conn, $queryPagina)) {
 
     // 4. Aggiorna il flag configurazioneCompletata (come richiesto inizialmente)
     // Questo permette all'utente di non essere più rediretto forzatamente
-    $queryUpdate = "UPDATE scalePreferite SET configurazioneCompletata = 1 WHERE idUtente = $idUtente";
-    mysqli_query($conn, $queryUpdate);
+    //$queryUpdate = "UPDATE scalePreferite SET configurazioneCompletata = 1 WHERE idUtente = $idUtente";
+    //mysqli_query($conn, $queryUpdate);
 
     header("Location: ../view/index.php?status=success");
     exit;
