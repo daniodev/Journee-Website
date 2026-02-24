@@ -1,95 +1,86 @@
 <!doctype html>
 <html lang="it">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>Scrivi il tuo diario - Journee</title>
-  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-  <?php
-    // Inclusione Bootstrap e connessione DB
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Scrivi il tuo diario - Journee</title>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <?php
     include '../../sources/include/bootStrap.html';
     include '../../sources/include/db.php';
-
-    // Avvio sessione
     session_start();
 
-    // Controllo autenticazione
     if(!isset($_SESSION["id"])){
       header("Location: ../../auth/login/");
       exit;
     }
 
-    // Recupero delle tipologie di scale dal database
+    // Carica le domande/scale dal database
     $queryScale = "SELECT * FROM tipologiascale";
     $resultScale = mysqli_query($conn, $queryScale);
-  ?>
+    ?>
 
-   <style>
-    /* Sfondo e font principale */
+    <style>
+    /* Configurazione generale della pagina */
     body {
-      margin: 0;
-      padding-top: 50px;
-      background-image: url('../../sources/images/backgrounds/write.png');
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-size: cover;
-      background-attachment: fixed;
-      overflow-x: hidden;
+        margin: 0;
+        padding-top: 50px;
+        background-image: url('../../sources/images/backgrounds/write.png');
+        font-family: 'IBM Plex Sans', sans-serif;
+        background-size: cover;
+        background-attachment: fixed;
+        overflow-x: hidden;
     }
 
-    /* Bottone personalizzato */
+    /* Stile del bottone rosa arrotondato */
     .btn-custom {
-      background-color: #fe7d82;
-      border-radius: 40px;
-      padding: 10px 50px;
-      font-weight: bold;
-      color: white;
+        background-color: #fe7d82;
+        border-radius: 40px;
+        padding: 10px 50px;
+        font-weight: bold;
+        color: white;
     }
 
-    /* Textarea con effetto vetro */
+    /* Box di testo con effetto sfocato (vetro) */
     .text-area-custom {
-      background-color: #FFFFFFD9 !important;
-      backdrop-filter: blur(5px);
-      border-radius: 20px;
-      resize: none;
-      margin-top: 30px;
-      margin-bottom: 10px;
+        background-color: #FFFFFFD9 !important;
+        backdrop-filter: blur(5px);
+        border-radius: 20px;
+        resize: none;
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
 
-    /* Campo titolo */
     .title-field {
-      height: 10vh;
-      font-size: clamp(25px, 5vw, 45px);
-      font-weight: bold;
-      text-align: center;
+        height: 10vh;
+        font-size: clamp(25px, 5vw, 45px);
+        font-weight: bold;
+        text-align: center;
     }
 
-    /* Campo contenuto */
     .content-field {
-      height: 60vh;
-      font-size: 18px;
+        height: 60vh;
+        font-size: 18px;
     }
 
-    /* Contenitore delle scale */
-    .scale-container {
-      background-color: #FFFFFFD9;
-      border-radius: 20px;
-      padding: 30px;
-      height: 72vh;
-      overflow-y: auto;
-    }
-
+    /* Layout della barra di navigazione inferiore */
     .bottom-bar {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding-bottom: 50px;
     }
 
-    .hidden-step { display: none !important; }
+    /* Classe per nascondere gli step non attivi */
+    .hidden-step {
+        display: none !important;
+    }
 
-      .date-pill {
+    /* Stile per la pillola della data */
+    .date-pill {
         background: #ffffffd9;
         border: 2px solid #fff;
         border-radius: 999px;
@@ -101,6 +92,7 @@
         gap: 8px;
     }
 
+    /* Stile per il selettore di pagina (1/2) */
     .pager {
         justify-self: center;
         display: inline-flex;
@@ -113,113 +105,146 @@
         user-select: none;
     }
 
-    .pager-btn {
-        width: 26px;
-        height: 26px;
-        border: none;
-        border-radius: 999px;
-        background: #fff;
-        line-height: 26px;
-        font-weight: 700;
-        cursor: pointer;
+    /* Titolo bianco con ombra per risaltare sullo sfondo */
+    .scale-title {
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        margin-bottom: 8px;
+        display: block;
     }
 
-    .pager-text {
-        font-weight: 700;
-        font-size: 14px;
-        opacity: .85;
+    /* Contenitore principale della scala (il bordo bianco esterno) */
+    .custom-progress-container {
+        position: relative;
+        width: 100%;
+        height: 18px;
+        background: rgba(255, 255, 255, 0.2); /* Sfondo traccia scura */
+        border: 2px solid rgba(255, 255, 255, 0.8); /* Bordo bianco */
+        border-radius: 50px;
+        overflow: visible; 
+        display: flex;
+        align-items: center;
     }
-  </style>
+
+    /* La barra rosa che scorre (arrotondata e fluida) */
+    .progress-fill-pink {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        background-color: #fe7d82;
+        border-radius: 50px; 
+        z-index: 1;
+        width: 0%; /* La larghezza viene gestita dal JS */
+        transition: width 0.05s linear;
+    }
+
+    /* Livello sopra la barra che contiene i 5 pallini */
+    .steps-overlay {
+        position: absolute;
+        width: 100%;
+        padding: 0 4px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+        pointer-events: none; /* Permette di cliccare lo slider sotto i pallini */
+    }
+
+    /* Stile dei pallini (bianchi di base) */
+    .step-dot {
+        width: 14px;
+        height: 14px;
+        background: white;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+    /* Colore dei pallini quando la barra rosa li raggiunge */
+    .step-dot.active {
+        background: #fceabb; /* Giallino crema */
+        border-color: #f39c12; /* Bordo arancione */
+        box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+    }
+
+    /* Lo slider trasparente che cattura il movimento del mouse */
+    .invisible-range {
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        z-index: 3;
+        cursor: pointer;
+    }
+    </style>
 </head>
 
 <body>
-  <?php include '../../sources/include/navBar.php'; ?>
-  <!-- Form invio dati -->
-  <form action="sendData.php" method="post" id="diaryForm">
-    <div class="container-fluid mt-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10">
- <!-- STEP 1: Inserimento titolo e contenuto -->
-          <div id="step-1">
-            <textarea class="form-control text-area-custom title-field" name="title" 
-                      placeholder="Title here. A poetic one" required></textarea>
-            
-            <textarea class="form-control text-area-custom content-field" name="comments" 
-                      placeholder="No hints. It's your day after all!" required></textarea>
-          </div>
- <!-- STEP 2: Selezione scale di valutazione -->
-          <div id="step-2" class="hidden-step">
-            <div class="scale-container shadow-sm">
-                <h2 class="text-center mb-4">Inserisci i valori da te desider</h2>
-                <p class="text-muted text-center">Valuta da 1 a 5 (massimo 3 scale)</p>
-                
-                <div class="list-group">
-                     <!-- Ciclo dinamico sulle scale dal database -->
-                    <?php while($row = mysqli_fetch_array($resultScale)): ?>
+    <?php include '../../sources/include/navBar.php'; ?>
 
-                    <div class="list-group-item d-flex flex-column p-3 mb-2 border-0 rounded shadow-sm">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                           <!-- Checkbox selezione scala -->
-                            <div class="form-check">
-                                <input class="form-check-input limit-check" type="checkbox" 
-                                       name="tipologie[]" value="<?= $row['idTipoScala'] ?>" 
-                                       id="c<?= $row['idTipoScala'] ?>">
-                                <label class="form-check-label fw-bold" for="c<?= $row['idTipoScala'] ?>">
-                                    <?= $row["descrizione"] ?>
-                                </label>
+    <form action="sendData.php" method="post" id="diaryForm">
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    
+                    <textarea class="form-control text-area-custom title-field" name="title" placeholder="Title here. A poetic one" required></textarea>
+                    
+                    <div id="step-1">
+                        <textarea class="form-control text-area-custom content-field" name="comments" placeholder="No hints. It's your day after all!" required></textarea>
+                    </div>
+
+                    <div id="step-2" class="hidden-step">
+                        <div class="list-group">
+                            <?php while($row = mysqli_fetch_array($resultScale)): ?>
+                            <div class="list-group-item bg-transparent border-0 p-0 mb-5">
+                                <span class="scale-title"><?= $row["descrizione"] ?></span>
+
+                                <div class="custom-progress-container">
+                                    <div class="progress-fill-pink"></div>
+
+                                    <div class="steps-overlay">
+                                        <div class="step-dot"></div>
+                                        <div class="step-dot"></div>
+                                        <div class="step-dot"></div>
+                                        <div class="step-dot"></div>
+                                        <div class="step-dot"></div>
+                                    </div>
+
+                                    <input type="range" class="invisible-range"
+                                        name="valutazione[<?= $row['idTipoScala'] ?>]" min="1" max="5" step="0.01"
+                                        value="3" oninput="updateDots(this)">
+                                </div>
                             </div>
-                            <small class="text-muted"><?= $row["nome"] ?></small>
-                        </div>
-                        <!-- Slider valutazione (1-5) -->
-                        <div class="px-3">
-                            <input type="range" class="form-range scale-range" 
-                                   name="valutazione[<?= $row['idTipoScala'] ?>]" 
-                                   min="1" max="5" value="3" disabled>
-                            <div class="d-flex justify-content-between small text-muted">
-                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                            </div>
+                            <?php endwhile; ?>
                         </div>
                     </div>
-                    <?php endwhile; ?>
+
+                    <div class="bottom-bar">
+                        <div class="date-pill"><?= date('d/m/Y')?></div>
+
+                        <div class="pager shadow-sm">
+                            <button type="button" class="pager-btn" onclick="toggleStep(1)">‹</button>
+                            <span id="page-indicator" class="pager-text">1/2</span>
+                            <button type="button" class="pager-btn" onclick="toggleStep(2)">›</button>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-custom">Next!</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-          </div>
-
-                    <!-- Barra inferiore con data, navigazione step e submit -->
-          <div class="bottom-bar">
-
-            <!-- Data corrente -->
-            <div class="date-pill"><?= date('d/m/Y')?></div>
-
-            <!-- Navigazione tra step -->
-            <div class="pager shadow-sm">
-              <button type="button" onclick="toggleStep(1)">‹</button>
-              <span id="page-indicator">1/2</span>
-              <button type="button" onclick="toggleStep(2)">›</button>
-            </div>
-
-            <!-- Invio form -->
-            <div class="text-end">
-                <button type="submit" class="btn btn-custom">
-                  Next!
-                </button>
-            </div>
-
-          </div>
-
         </div>
-      </div>
-    </div>
-  </form>
+    </form>
 
-  <script>
-    // Riferimenti agli step
-    const step1 = document.getElementById('step-1');
-    const step2 = document.getElementById('step-2');
-    const indicator = document.getElementById('page-indicator');
-
-    // Funzione per cambiare pagina (Step 1 ↔ Step 2)
+    <script>
+    // Gestione del cambio pagina tra Step 1 e Step 2
     function toggleStep(step) {
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const indicator = document.getElementById('page-indicator');
+
         if (step === 1) {
             step1.classList.remove('hidden-step');
             step2.classList.add('hidden-step');
@@ -231,43 +256,37 @@
         }
     }
 
-    // Limite massimo 3 checkbox selezionabili
-    const checkboxes = document.querySelectorAll(".limit-check");
-    
-    checkboxes.forEach(cb => {
-      cb.addEventListener("change", function () {
+    // Funzione che aggiorna visivamente la barra rosa e i pallini
+    function updateDots(el) {
+        const val = parseFloat(el.value);
+        const container = el.closest('.list-group-item');
+        const fill = container.querySelector('.progress-fill-pink');
+        const dots = container.querySelectorAll('.step-dot');
 
-        const checkedCount =
-            document.querySelectorAll(".limit-check:checked").length;
+        // Calcola quanto deve essere larga la barra rosa (da 0% a 100%)
+        let percentage = ((val - 1) / (5 - 1)) * 100;
 
-        const rangeInput =
-            this.closest('.list-group-item')
-                .querySelector('.scale-range');
-
-        // Se supera 3, annulla selezione
-        if (checkedCount > 3) {
-          this.checked = false;
-          rangeInput.disabled = true;
-          alert("Puoi selezionare massimo 3 scale.");
-        } else {
-          // Attiva/disattiva slider
-          rangeInput.disabled = !this.checked;
+        // Mantiene sempre un minimo di barra rosa visibile per estetica
+        const minWidth = 2.5; 
+        if (percentage < minWidth) {
+            percentage = minWidth;
         }
-      });
-    });
 
-    // Validazione prima dell'invio
-    document.getElementById('diaryForm').onsubmit = function() {
+        // Allunga o accorcia fisicamente la barra rosa
+        fill.style.width = percentage + "%";
 
-        const checkedCount =
-            document.querySelectorAll(".limit-check:checked").length;
+        // Cicla i pallini: se il valore è superato, diventano arancioni (active)
+        dots.forEach((dot, index) => {
+            if (val >= (index + 1)) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
 
-        if (checkedCount === 0) {
-            alert("Seleziona almeno una scala.");
-            toggleStep(2);
-            return false; // blocca invio
-        }
-    };
-</script>
+    // Al caricamento della pagina, disegna subito le barre basandosi sul valore iniziale (3)
+    document.querySelectorAll('.invisible-range').forEach(range => updateDots(range));
+    </script>
 </body>
 </html>
