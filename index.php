@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journee HomePage</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
 
         include 'sources/include/bootStrap.html';
         include 'sources/include/db.php';
-        include 'sources/include/loggednavbar.php';
+        include 'sources/include/loggedNavBar.php';
 
         if(!isset($_SESSION["id"])) {
             header("Location: landing.php");

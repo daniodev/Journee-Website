@@ -2,7 +2,7 @@
 // Include Bootstrap per lo stile
 include '../../sources/include/bootStrap.html';
 ?>
-
+<link rel="icon" href="../../favicon.ico" type="image/x-icon">
 <style>
         body {
             background-image: url('../../sources/images/background.png');

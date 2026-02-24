@@ -1,3 +1,4 @@
+<link rel="icon" href="../../favicon.ico" type="image/x-icon">
 <?php
 session_start();
 
@@ -9,7 +10,7 @@ if(!isset($_GET["id"]) || !isset($_SESSION["id"])){
 include '../../sources/include/db.php';
 include '../../sources/include/bootStrap.html';
 
-$query = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM Pagine WHERE idUtente = ". $_SESSION["id"] . " AND idPagina = " . $_GET["id"];
+$query = "SELECT titolo, giornoScrittura, pensieroGiornaliero FROM pagine WHERE idUtente = ". $_SESSION["id"] . " AND idPagina = " . $_GET["id"];
 
 $result = mysqli_query($conn, $query);
 
