@@ -7,21 +7,26 @@
   <title>Scrivi il tuo diario - Journee</title>
 
   <?php
+    // Inclusione Bootstrap e connessione DB
     include '../../sources/include/bootStrap.html';
     include '../../sources/include/db.php';
+
+    // Avvio sessione
     session_start();
 
+    // Controllo autenticazione
     if(!isset($_SESSION["id"])){
       header("Location: ../../auth/login/");
       exit;
     }
 
-    // Recuperiamo le tipologie di scale dal database
+    // Recupero delle tipologie di scale dal database
     $queryScale = "SELECT * FROM tipologiascale";
     $resultScale = mysqli_query($conn, $queryScale);
   ?>
 
-  <style>
+   <style>
+    /* Sfondo e font principale */
     body {
       margin: 0;
       padding-top: 50px;
@@ -32,89 +37,67 @@
       overflow-x: hidden;
     }
 
+    /* Bottone personalizzato */
     .btn-custom {
       background-color: #fe7d82;
-      border-color: #fe7d82;
       border-radius: 40px;
       padding: 10px 50px;
       font-weight: bold;
       color: white;
     }
-    .btn-custom:hover {
-      background-color: #e86f74;
-      color: white;
-    }
 
+    /* Textarea con effetto vetro */
     .text-area-custom {
       background-color: #FFFFFFD9 !important;
       backdrop-filter: blur(5px);
-      border: white solid 2px;
       border-radius: 20px;
       resize: none;
     }
 
+    /* Campo titolo */
     .title-field {
       height: 10vh;
       font-size: clamp(25px, 5vw, 45px);
       font-weight: bold;
       text-align: center;
-      margin-bottom: 20px;
     }
 
+    /* Campo contenuto */
     .content-field {
       height: 60vh;
       font-size: 18px;
     }
 
-    /* Container delle Scale */
+    /* Contenitore delle scale */
     .scale-container {
       background-color: #FFFFFFD9;
       border-radius: 20px;
       padding: 30px;
-      height: 72vh; /* Allineato all'altezza dei testi */
+      height: 72vh;
       overflow-y: auto;
     }
 
+    /* Barra inferiore con data e navigazione */
     .bottom-bar {
-      margin-top: 20px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding-bottom: 50px;
     }
 
-    .date-pill, .pager {
-      background: #ffffffd9;
-      border: 2px solid #fff;
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .pager-btn {
-      border: none;
-      background: #fff;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
+    /* Nasconde uno step */
     .hidden-step { display: none !important; }
   </style>
 </head>
 
 <body>
   <?php include '../../sources/include/navBar.php'; ?>
-
+  <!-- Form invio dati -->
   <form action="sendData.php" method="post" id="diaryForm">
     <div class="container-fluid mt-5">
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
-
+ <!-- STEP 1: Inserimento titolo e contenuto -->
           <div id="step-1">
             <textarea class="form-control text-area-custom title-field" name="title" 
                       placeholder="Title here. A poetic one" required></textarea>
@@ -122,16 +105,19 @@
             <textarea class="form-control text-area-custom content-field" name="comments" 
                       placeholder="No hints. It's your day after all!" required></textarea>
           </div>
-
+ <!-- STEP 2: Selezione scale di valutazione -->
           <div id="step-2" class="hidden-step">
             <div class="scale-container shadow-sm">
                 <h2 class="text-center mb-4">Inserisci i valori da te desider</h2>
                 <p class="text-muted text-center">Valuta da 1 a 5 (massimo 3 scale)</p>
                 
                 <div class="list-group">
+                     <!-- Ciclo dinamico sulle scale dal database -->
                     <?php while($row = mysqli_fetch_array($resultScale)): ?>
+
                     <div class="list-group-item d-flex flex-column p-3 mb-2 border-0 rounded shadow-sm">
                         <div class="d-flex justify-content-between align-items-center mb-2">
+                           <!-- Checkbox selezione scala -->
                             <div class="form-check">
                                 <input class="form-check-input limit-check" type="checkbox" 
                                        name="tipologie[]" value="<?= $row['idTipoScala'] ?>" 
@@ -142,7 +128,7 @@
                             </div>
                             <small class="text-muted"><?= $row["nome"] ?></small>
                         </div>
-                        
+                        <!-- Slider valutazione (1-5) -->
                         <div class="px-3">
                             <input type="range" class="form-range scale-range" 
                                    name="valutazione[<?= $row['idTipoScala'] ?>]" 
@@ -157,18 +143,26 @@
             </div>
           </div>
 
+                    <!-- Barra inferiore con data, navigazione step e submit -->
           <div class="bottom-bar">
+
+            <!-- Data corrente -->
             <div class="date-pill"><?= date('d/m/Y')?></div>
 
+            <!-- Navigazione tra step -->
             <div class="pager shadow-sm">
-              <button type="button" class="pager-btn" onclick="toggleStep(1)">‹</button>
-              <span class="pager-text mx-2" id="page-indicator">1/2</span>
-              <button type="button" class="pager-btn" onclick="toggleStep(2)">›</button>
+              <button type="button" onclick="toggleStep(1)">‹</button>
+              <span id="page-indicator">1/2</span>
+              <button type="button" onclick="toggleStep(2)">›</button>
             </div>
 
+            <!-- Invio form -->
             <div class="text-end">
-                <button type="submit" class="btn btn-custom shadow-sm">Next!</button>
+                <button type="submit" class="btn btn-custom">
+                  Next!
+                </button>
             </div>
+
           </div>
 
         </div>
@@ -177,10 +171,12 @@
   </form>
 
   <script>
+    // Riferimenti agli step
     const step1 = document.getElementById('step-1');
     const step2 = document.getElementById('step-2');
     const indicator = document.getElementById('page-indicator');
 
+    // Funzione per cambiare pagina (Step 1 ↔ Step 2)
     function toggleStep(step) {
         if (step === 1) {
             step1.classList.remove('hidden-step');
@@ -193,34 +189,43 @@
         }
     }
 
-    // Logica limite 3 checkbox e attivazione range
+    // Limite massimo 3 checkbox selezionabili
     const checkboxes = document.querySelectorAll(".limit-check");
     
     checkboxes.forEach(cb => {
       cb.addEventListener("change", function () {
-        const checkedCount = document.querySelectorAll(".limit-check:checked").length;
-        const rangeInput = this.closest('.list-group-item').querySelector('.scale-range');
 
+        const checkedCount =
+            document.querySelectorAll(".limit-check:checked").length;
+
+        const rangeInput =
+            this.closest('.list-group-item')
+                .querySelector('.scale-range');
+
+        // Se supera 3, annulla selezione
         if (checkedCount > 3) {
           this.checked = false;
           rangeInput.disabled = true;
-          alert("Puoi selezionare un massimo di 3 scale per oggi.");
+          alert("Puoi selezionare massimo 3 scale.");
         } else {
-            // Abilita o disabilita lo slider in base alla selezione
-            rangeInput.disabled = !this.checked;
+          // Attiva/disattiva slider
+          rangeInput.disabled = !this.checked;
         }
       });
     });
 
     // Validazione prima dell'invio
-    document.getElementById('diaryForm').onsubmit = function(e) {
-        const checkedCount = document.querySelectorAll(".limit-check:checked").length;
+    document.getElementById('diaryForm').onsubmit = function() {
+
+        const checkedCount =
+            document.querySelectorAll(".limit-check:checked").length;
+
         if (checkedCount === 0) {
-            alert("Per favore, seleziona almeno una scala di valutazione nello step 2!");
+            alert("Seleziona almeno una scala.");
             toggleStep(2);
-            return false;
+            return false; // blocca invio
         }
     };
-  </script>
+</script>
 </body>
 </html>
