@@ -157,7 +157,7 @@ body {
                 <img src="sources/images/corona.png" class="images" alt="Crown icon">
             </div>
             <p class="txt">
-                Ripercorrendo le giornate,capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
+                Ripercorrendo le giornate, capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
             </p>
         </div>
 

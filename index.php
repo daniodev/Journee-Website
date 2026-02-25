@@ -42,7 +42,7 @@
     <style>
         body {
             margin: 0;
-            background-image: url('sources/images/backgrounds/home.png');
+            background-image: url('sources/images/backgrounds/home1080.png');
             font-family: 'IBM Plex Sans', sans-serif;
             background-size: cover;
             background-position: center;

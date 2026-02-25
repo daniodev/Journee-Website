@@ -28,7 +28,7 @@
     body {
         margin: 0;
         padding-top: 50px;
-        background-image: url('../../sources/images/backgrounds/write.png');
+        background-image: url('../../sources/images/backgrounds/write1080.png');
         font-family: 'IBM Plex Sans', sans-serif;
         background-size: cover;
         background-attachment: fixed;

@@ -27,7 +27,7 @@ include '../../sources/include/navbar.php';
 <style>
 body {
     margin: 0;
-    background-image: url('../../sources/images/backgrounds/view.png');
+    background-image: url('../../sources/images/backgrounds/view1080.png');
     font-family: 'IBM Plex Sans', sans-serif;
     background-size: cover;
     background-position: center;
