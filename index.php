@@ -134,11 +134,6 @@
             <div class="col-11">
                 <h1 class="text float-start">Your Recent Journee's</h1>
             </div>
-            <div class="col-1">
-                <form action="diary/view/index.php">
-                    <button class="btn btn-arrow btn-lg">→</button>
-                </form>
-            </div>
         </div>
 
         <div class="row">

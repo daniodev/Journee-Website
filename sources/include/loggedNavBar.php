@@ -20,10 +20,12 @@
     width: 60px;
     height: 60px;
     border-radius: 40px;
+    padding: 0px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fff7e9;
 }
 
 .expand-btn img {
@@ -138,7 +140,7 @@
     color: #000;
 }
 
-/* Diary items nel pannello */
+
 .diary-item {
   display: flex;
   gap: 15px;

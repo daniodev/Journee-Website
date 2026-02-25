@@ -184,6 +184,10 @@
         z-index: 3;
         cursor: pointer;
     }
+    .pager-btn {
+        background: none;
+        border: none;
+    }
     </style>
 </head>
 
@@ -231,13 +235,13 @@
                         <div class="date-pill"><?= date('d/m/Y')?></div>
 
                         <div class="pager shadow-sm">
-                            <button type="button" class="pager-btn" onclick="toggleStep(1)">‹</button>
+                            <button type="button" class="pager-btn" onclick="toggleStep(1)"><</button>
                             <span id="page-indicator" class="pager-text">1/2</span>
-                            <button type="button" class="pager-btn" onclick="toggleStep(2)">›</button>
+                            <button type="button" class="pager-btn" onclick="toggleStep(2)">></button>
                         </div>
 
                         <div class="text-end">
-                            <button type="submit" class="btn btn-custom">Next!</button>
+                            <button type="submit" class="btn btn-custom">Done!</button>
                         </div>
                     </div>
 
