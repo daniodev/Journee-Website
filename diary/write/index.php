@@ -37,7 +37,15 @@
 
     /* Stile del bottone rosa arrotondato */
     .btn-custom {
-        background-color: #fe7d82;
+        background-color: #ff758b;
+        border-radius: 40px;
+        padding: 10px 50px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .btn-custom:hover {
+        background-color: #ff506c;
         border-radius: 40px;
         padding: 10px 50px;
         font-weight: bold;
@@ -211,7 +219,7 @@
                                     </div>
 
                                     <input type="range" class="invisible-range"
-                                        name="valutazione[<?= $row['idTipoScala'] ?>]" min="1" max="5" step="0.01"
+                                        name="valutazione[<?= $row['idTipoScala'] ?>]" min="1" max="5" step="1"
                                         value="3" oninput="updateDots(this)">
                                 </div>
                             </div>

@@ -26,7 +26,7 @@
 }
 
 .profile {
-    background-color: #ff758a;
+    background-color: #ff758b;
     border-radius: 40px;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;

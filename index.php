@@ -66,6 +66,7 @@
         }
 
         .btn-purple:hover {
+            color: #FFFFFF;
             background-color: #452EDB;
             border-color: #452EDB;
         }

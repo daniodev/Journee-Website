@@ -29,8 +29,8 @@ body {
 }
 
 .btn-journee {
-    background-color: #fe7d82;
-    border-color: #fe7d82;
+    background-color: #ff758b;
+    border-color: #ff758b;
     color: white;
 
     font-size: clamp(5px, 5vw, 30px);
@@ -44,8 +44,8 @@ body {
 }
 
 .btn-journee:hover {
-    background-color: #e86f74;
-    border-color: #e86f74;
+    background-color: #ff506c;
+    border-color: #ff506c;
     color: white;
 }
 

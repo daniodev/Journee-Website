@@ -123,8 +123,8 @@ body {
 }
 
 .btn-custom {
-    background-color: #fe7d82;
-    border-color: #fe7d82;
+    background-color: #ff758b;
+    border-color: #ff758b;
     border-radius: 40px;
     padding-left: 50px;
     padding-right: 50px;
@@ -132,8 +132,8 @@ body {
 }
 
 .btn-custom:hover {
-    background-color: #e86f74;
-    border-color: #e86f74;
+    background-color: #ff506c;
+    border-color: #ff506c;
 }
 
 .recicleBin {
