@@ -58,8 +58,8 @@
 
         .btn-purple {
             color: #FFFFFF;
-            background-color: #5B47DF;
-            border-color: #5B47DF;
+            background-color: #ff758b;
+            border-color: #ff758b;
             padding: 10px 20px;
             border-radius: 40px;
             font-weight: bold;
@@ -67,8 +67,8 @@
 
         .btn-purple:hover {
             color: #FFFFFF;
-            background-color: #452EDB;
-            border-color: #452EDB;
+            background-color: #ff506c;
+            border-color: #ff506c;
         }
 
         .btn-arrow {
