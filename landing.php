@@ -139,7 +139,7 @@ body {
             <div class="features">
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/brain.png" alt="Brain icon">
+                <img src="sources/images/cervello.png" alt="Brain icon">
             </div>
             <p>
                 Connetterai pensieri e sentimenti, raggiungerai una consapevolezza fondata sulla conoscenza della tua persona!
@@ -148,7 +148,7 @@ body {
 
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/crown.png" alt="Crown icon">
+                <img src="sources/images/corona.png" alt="Crown icon">
             </div>
             <p>
                 Ripercorrendo le giornate,capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
@@ -157,13 +157,8 @@ body {
 
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/smile.png" alt="Smile icon">
+                <img src="sources/images/faccina.png" alt="Smile icon">
             </div>
-
-            <!--
-            qui c'è un invio a nuova riga <br> momentaneo perchè non c'è uno stabilizzatore per le icone e i testi
-            -->
-            <br>
 
             <p>
                 Potrai vantare un umore più stabile che mai, basato sulle solide fondamenta dalla chiarezza mentale!
