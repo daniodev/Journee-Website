@@ -159,6 +159,12 @@ body {
             <div class="icon">
                 <img src="sources/images/smile.png" alt="Smile icon">
             </div>
+
+            <!--
+            qui c'è un invio a nuova riga <br> momentaneo perchè non c'è uno stabilizzatore per le icone e i testi
+            -->
+            <br>
+
             <p>
                 Potrai vantare un umore più stabile che mai, basato sulle solide fondamenta dalla chiarezza mentale!
             </p>
