@@ -23,17 +23,23 @@ if (mysqli_query($conn, $queryPagina)) {
 
     // 3. Salvataggio Scale selezionate
     // $_POST['tipologie'] contiene gli ID delle checkbox spuntate
-    if (isset($_POST['tipologie']) && is_array($_POST['tipologie'])) {
-        foreach ($_POST['tipologie'] as $idTipoScala) {
-            // Recuperiamo il valore del range corrispondente all'ID della scala
-            $voto = intval($_POST['valutazione'][$idTipoScala]);
-            
-            $queryScale = "INSERT INTO scale (valutazione, idPagina, idTipoScala) 
-                           VALUES ('$voto', '$idPagina', '$idTipoScala')";
-            mysqli_query($conn, $queryScale);
+// 3. Salvataggio Scale selezionate
+if (isset($_POST['valutazione']) && is_array($_POST['valutazione'])) {
+    foreach ($_POST['valutazione'] as $idTipoScala => $voto) {
+        
+        // Sanificazione dei dati del ciclo
+        $idTipoScala = intval($idTipoScala);
+        $voto = intval($voto);
+        
+        $queryScale = "INSERT INTO scale (valutazione, idPagina, idTipoScala) 
+                       VALUES ('$voto', '$idPagina', '$idTipoScala')";
+        
+        if (!mysqli_query($conn, $queryScale)) {
+            // Opzionale: log errore se una scala fallisce
+            error_log("Errore inserimento scala ID $idTipoScala: " . mysqli_error($conn));
         }
     }
-
+}
     // 4. Aggiorna il flag configurazioneCompletata (come richiesto inizialmente)
     // Questo permette all'utente di non essere più rediretto forzatamente
     //$queryUpdate = "UPDATE scalePreferite SET configurazioneCompletata = 1 WHERE idUtente = $idUtente";

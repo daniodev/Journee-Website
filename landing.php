@@ -52,7 +52,6 @@ body {
 .mission{
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
-    margin-top: 20vh;
     font-weight: bold;
     font-size: clamp(10px, 6vw, 50px);
 }
@@ -61,7 +60,7 @@ body {
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: clamp(5px, 5vw, 20px);
-    disply: flex;
+    display: block;
     flex-direction: column;
     gap: 10px;
 }
@@ -70,10 +69,9 @@ body {
     background-color: #FFECC6;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    margin: 0 20vw;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
+    margin: 0 clamp(30vw, 10vw, 20vw) !important;
+    margin-top: 20vh !important;
+    padding: clamp(20px, 4vw, 40px) 30px 20px;
 }
 .features {
     margin-top: 100px;
@@ -101,6 +99,13 @@ body {
 
 .feature-card p {
     font-size: 16px;
+}
+.txt{
+    font-style: italic !important;
+}
+.images{
+    width: 150px;
+    height: 150px;
 }
     </style>
 
@@ -132,35 +137,36 @@ body {
         
         <br><br>La soluzione che abbiamo riservato per te richiede costanza.
         <br>Si tratta della scrittura di un diario. 
-        <br>È la forma di introspezione più semplice e studi provano sia anche la più efficace!
+        <br>È la forma di introspezione più semplice e studi provano sia 
+        <br>anche la più efficace!
         </p>
         </div>
 
             <div class="features">
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/cervello.png" alt="Brain icon">
+                <img src="sources/images/cervello.png" class="images" alt="Brain icon">
             </div>
-            <p>
+            <p class="txt">
                 Connetterai pensieri e sentimenti, raggiungerai una consapevolezza fondata sulla conoscenza della tua persona!
             </p>
         </div>
 
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/corona.png" alt="Crown icon">
+                <img src="sources/images/corona.png" class="images" alt="Crown icon">
             </div>
-            <p>
-                Ripercorrendo le giornate,capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
+            <p class="txt">
+                Ripercorrendo le giornate, capirai errori fatti in passato e formulerai strategie per raggiungere i tuoi obiettivi!
             </p>
         </div>
 
         <div class="feature-card">
             <div class="icon">
-                <img src="sources/images/faccina.png" alt="Smile icon">
+                <img src="sources/images/faccina.png" class="images" alt="Smile icon">
             </div>
 
-            <p>
+            <p class="txt">
                 Potrai vantare un umore più stabile che mai, basato sulle solide fondamenta dalla chiarezza mentale!
             </p>
         </div>
