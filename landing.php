@@ -53,13 +53,13 @@ body {
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
-    font-size: clamp(10px, 6vw, 50px);
+    font-size: clamp(25px, 4vw, 50px);
 }
 
 .mission-text {
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: clamp(5px, 5vw, 20px);
+    font-size: clamp(5px, 2.3vw, 20px);
     display: block;
     flex-direction: column;
     gap: 10px;
@@ -69,9 +69,10 @@ body {
     background-color: #FFECC6;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    margin: 0 clamp(30vw, 10vw, 20vw) !important;
+    margin: 0 clamp(20vw, 10vw, 30vw) !important;
     margin-top: 20vh !important;
-    padding: clamp(20px, 4vw, 40px) 30px 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .features {
     margin-top: 100px;
@@ -106,6 +107,22 @@ body {
 .images{
     width: 150px;
     height: 150px;
+}
+
+@media (max-width: 767px) {
+    .mission-div {
+        margin: 0 10vw !important;
+        margin-top: 10vh !important;
+    }
+    .mission-text{
+        font-size: clamp(10px, 2.5vw, 30px);
+    }
+    .phrases{
+        padding-top: 27%;
+    }
+    .journee{
+        margin-left: clamp(-21px, -5vw, -35px) !important;
+    }
 }
     </style>
 
