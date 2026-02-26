@@ -118,21 +118,21 @@
         <div class="row">
             <div class="col-12 phrases">
                 <h1 class="text">
-                    Welcome <?php echo $userRow["nome"] ?>!<br>
-                    How you feelin' today?
+                    Benvenuto <?php echo $userRow["nome"] ?>!<br>
+                    Come ti senti oggi?
                 </h1>
 
                 <div class="spacer"></div>
 
                 <form action="diary/write/">
-                    <button class="btn btn-purple btn-lg">Write now</button>
+                    <button class="btn btn-purple btn-lg">Scrivi ora</button>
                 </form>
             </div>
         </div>
 
         <div class="row phrases">
             <div class="col-11">
-                <h1 class="text float-start">Your Recent Journee's</h1>
+                <h1 class="text float-start">I tuoi Journee recenti</h1>
             </div>
         </div>
 

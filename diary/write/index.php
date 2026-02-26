@@ -199,10 +199,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
                     
-                    <textarea class="form-control text-area-custom title-field" name="title" placeholder="Title here. A poetic one" required></textarea>
+                    <textarea class="form-control text-area-custom title-field" name="title" placeholder="Un titolo poetico" required></textarea>
                     
                     <div id="step-1">
-                        <textarea class="form-control text-area-custom content-field" name="comments" placeholder="No hints. It's your day after all!" required></textarea>
+                        <textarea class="form-control text-area-custom content-field" name="comments" placeholder="Niente indizi.. E' il tuo giorno!" required></textarea>
                     </div>
 
                     <div id="step-2" class="hidden-step">
@@ -241,7 +241,7 @@
                         </div>
 
                         <div class="text-end">
-                            <button type="submit" class="btn btn-custom">Done!</button>
+                            <button type="submit" class="btn btn-custom">Fatto!</button>
                         </div>
                     </div>
 
